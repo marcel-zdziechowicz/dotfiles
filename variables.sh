@@ -1,5 +1,5 @@
-TTY_KEYMAP = "pl2"
-TTY_FONT = "Lat2-Terminus16"
+TTY_KEYMAP="pl2"
+TTY_FONT="Lat2-Terminus16"
 
 # My host and user names :)P
 USERNAME="coffee"

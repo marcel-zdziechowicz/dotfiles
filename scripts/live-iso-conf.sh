@@ -46,7 +46,7 @@ mount -o subvol=@home "$SYSPART" /mnt/home
 reflector --latest 20 --sort rate --age 12 \
 	--protocol https --save /etc/pacman.d/mirrorlist
 
-pacstrap -K /mnt base linux linux-firmware zsh
+pacstrap -K /mnt base linux linux-firmware sudo zsh
 
 # Generate the file system table
 genfstab -U /mnt >> /mnt/etc/fstab
