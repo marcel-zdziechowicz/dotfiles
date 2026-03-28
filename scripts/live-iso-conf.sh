@@ -76,6 +76,6 @@ arch-chroot /mnt sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/
 arch-chroot /mnt mkinitcpio -P || true
 
 # Installing boot manager - GRUB
-arch-chroot /mnt pacman -Sy grub efibootmgr
+arch-chroot /mnt pacman -Sy --noconfirm grub
 arch-chroot /mnt grub-install --target=i386-pc "$DISK_DEV"
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
