@@ -53,7 +53,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 # Setting the timezone
 arch-chroot /mnt ln -sf "/usr/share/zoneinfo/${AREA}/${LOCATION}" /etc/localtime
-arch-chroot hwclock --systohc
+arch-chroot /mnt hwclock --systohc
 # TODO: Configure time synchronization
 
 # Locales
