@@ -79,3 +79,5 @@ arch-chroot /mnt mkinitcpio -P || true
 arch-chroot /mnt pacman -Sy --noconfirm grub
 arch-chroot /mnt grub-install --target=i386-pc "$DISK_DEV"
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
+
+cp "${SOURCE_DIR}/../" "/mnt/home/${USERNAME}/"
