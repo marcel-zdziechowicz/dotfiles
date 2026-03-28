@@ -118,7 +118,7 @@ fi
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
-REPO_PATH="$(cd "$(dirname "${SOURCE_DIR}/../../dotfiles")" && pwd)"
+REPO_PATH="$(cd "${SOURCE_DIR}/../" && pwd)"
 
 cp -r "$REPO_PATH" "/mnt/home/${USERNAME}/"
-arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/mnt/home/${USERNAME}/dotfiles"
+arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}/dotfiles"
