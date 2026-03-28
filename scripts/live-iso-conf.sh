@@ -11,7 +11,7 @@ setfont  "$TTY_FONT"
 # Check for internet connection
 if ! ping -c 1 ping.archlinux.org >/dev/null; then
 	echo "No Internet connection."
-	# TODO: Try connecting with WiFi
+	exit 1
 fi
 
 # Synchronize the system clock
@@ -20,17 +20,36 @@ timedatectl
 # WARNING: wiping the hard drive
 wipefs -a "$DISK_DEV"
 
-# TODO: Configurable partitioning
+BOOTMODE=""
+if [ -d /sys/firmware/efi ]; then
+	BOOTMODE="UEFI"
+else
+	BOOTMODE="BIOS"
+fi
+
 parted -s "$DISK_DEV" mklabel gpt
-parted -s "$DISK_DEV" mkpart primary 1MiB 3MiB
-parted -s "$DISK_DEV" set 1 bios_grub on
-parted -s "$DISK_DEV" mkpart primary 3MiB "$SWAP_END"
+
+if [[ "$BOOTMODE" == "BIOS" ]]; then
+	parted -s "$DISK_DEV" mkpart primary 1MiB 3MiB
+	parted -s "$DISK_DEV" set 1 bios_grub on
+	parted -s "$DISK_DEV" mkpart primary 3MiB "$SWAP_END"
+else
+	parted -s "$DISK_DEV" mkpart ESP fat32 1MiB 513MiB
+	parted -s "$DISK_DEV" set 1 esp on
+	parted -s "$DISK_DEV" mkpart primary 513MiB "$SWAP_END"
+fi
+
 parted -s "$DISK_DEV" mkpart primary "$SWAP_END" 100%
 
+BOOTPART="${PART_PREF}1"
 SWAP="${PART_PREF}2"
 SYSPART="${PART_PREF}3"
 
-mkfs.btrfs "$SYSPART"
+if [[ "$BOOTMODE" == "UEFI" ]]; then
+	mkfs.fat -F32 "$BOOTPART"
+fi
+
+mkfs.btrfs -f "$SYSPART"
 mkswap "$SWAP"
 swapon "$SWAP"
 
@@ -43,10 +62,15 @@ mount -o subvol=@ "$SYSPART" /mnt
 mkdir -p /mnt/home
 mount -o subvol=@home "$SYSPART" /mnt/home
 
+if [[ "$BOOTMODE" == "UEFI" ]]; then
+	mkdir -p /mnt/boot
+	mount "$BOOTPART" /mnt/boot
+fi
+
 reflector --latest 20 --sort rate --age 12 \
 	--protocol https --save /etc/pacman.d/mirrorlist
 
-pacstrap -K /mnt base linux linux-firmware sudo zsh
+pacstrap -K /mnt "${INSTALL[@]}"
 
 # Generate the file system table
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -63,6 +87,7 @@ done
 arch-chroot /mnt locale-gen
 echo "LANG=${LOCALE_LANG}" > /mnt/etc/locale.conf
 echo "LC_MESSAGES=${LOCALE_MSG}" >> /mnt/etc/locale.conf
+
 echo "KEYMAP=${TTY_KEYMAP}" > /mnt/etc/vconsole.conf
 echo "FONT=${TTY_FONT}" >> /mnt/etc/vconsole.conf
 echo "$HOSTNAME" > /mnt/etc/hostname
@@ -76,8 +101,24 @@ arch-chroot /mnt sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/
 arch-chroot /mnt mkinitcpio -P || true
 
 # Installing boot manager - GRUB
-arch-chroot /mnt pacman -Sy --noconfirm grub
-arch-chroot /mnt grub-install --target=i386-pc "$DISK_DEV"
+GRUB_PCKGS=(grub)
+
+if [[ "$BOOTMODE" == "UEFI" ]]; then
+	GRUB_PCKGS+=(efibootmgr)
+fi
+
+arch-chroot /mnt pacman -Sy --noconfirm "${GRUB_PCKGS[@]}"
+
+if [[ "$BOOTMODE" == "BIOS" ]]; then
+	arch-chroot /mnt grub-install --target=i386-pc "$DISK_DEV"
+else
+	arch-chroot /mnt grub-install --target=x86_64-efi \
+		--efi-directory=esp --bootloader-id=GRUB
+fi
+
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
-cp "${SOURCE_DIR}/../" "/mnt/home/${USERNAME}/"
+REPO_PATH="$(cd "$(dirname "${SOURCE_DIR}/../../dotfiles")" && pwd)"
+
+cp -r "$REPO_PATH" "/mnt/home/${USERNAME}/"
+arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/mnt/home/${USERNAME}/dotfiles"

@@ -54,7 +54,9 @@ PART_PREF="/dev/sda"
 # so you choose the size and add
 # 3MiB to get the value. The rest
 # of the disk is assigned to the 
-# system partition
+# system partition. Note, this value
+# cannot be less than 513MiB on UEFI
+# systems and 3MiB on BIOS machines
 SWAP_END="4099MiB"
 
 # You need to specify the network
@@ -73,3 +75,9 @@ PASSPHRASE=""
 # Your wireless network interface
 # (usually wlan0)
 NETIF=""
+
+INSTALL=(
+	base linux linux-firmware sudo
+	zsh networkmanager neovim python
+	man man-pages texinfo intel-ucode
+)
