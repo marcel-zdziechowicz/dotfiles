@@ -73,7 +73,7 @@ echo "root:${ROOT_PASSWD}" | arch-chroot /mnt chpasswd
 arch-chroot /mnt sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 
 # Regenerating initramfs
-arch-chroot /mnt mkinitcpio -P
+arch-chroot /mnt mkinitcpio -P || true
 
 # Installing boot manager - GRUB
 arch-chroot /mnt pacman -Sy grub efibootmgr
