@@ -1,8 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SOURCE_DIR}/../variables.sh"
+cd ~/dotfiles
+CURR_DIR="$(pwd)"
+source "${CURR_DIR}/variables.sh"
 
 PACMAN_PKGS=()
 AUR_PKGS=()
@@ -25,6 +26,7 @@ SUDO_LOOP_PID=$!
 trap "kill $SUDO_LOOP_PID" EXIT
 
 pwd
+whoami
 
 # pacman -Syu --noconfirm "${PACMAN_PKGS[@]}"
 # yay -S  --noconfirm --answerdiff None --answerclean None
