@@ -16,20 +16,11 @@ for pkg in "${INSTALL[@]}"; do
 	fi
 done
 
-(
-	while true; do
-		echo "$PASSWORD" | sudo -S true
-		sleep 60
-	done
-) &
-SUDO_LOOP_PID=$!
-trap "kill $SUDO_LOOP_PID" EXIT
-
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -sic --noconfirm
 cd ..
 rm -rf yay-bin
 
-# pacman -Syu --noconfirm "${PACMAN_PKGS[@]}"
+pacman -Syu --noconfirm "${PACMAN_PKGS[@]}"
 # yay -S  --noconfirm --answerdiff None --answerclean None

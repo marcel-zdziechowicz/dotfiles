@@ -93,7 +93,9 @@ echo "$HOSTNAME" > /mnt/etc/hostname
 arch-chroot /mnt useradd -m -G wheel -s /bin/zsh "$USERNAME"
 echo "${USERNAME}:${PASSWORD}" | arch-chroot /mnt chpasswd
 echo "root:${ROOT_PASSWD}" | arch-chroot /mnt chpasswd
-arch-chroot /mnt sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
+
+#temporarily disable password prompts
+arch-chroot /mnt sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # Regenerating initramfs
 arch-chroot /mnt mkinitcpio -P || true
