@@ -39,28 +39,26 @@ else
 	parted -s "$DISK_DEV" mkpart primary 513MiB "$SWAP_END"
 fi
 
-parted -s "$DISK_DEV" mkpart primary "$SWAP_END" 100%
+parted -s "$DISK_DEV" mkpart primary "$SWAP_END" "$SYSPART_END"
+parted -s "$DISK_DEV" mkpart primary "$SYSPART_END" 100%
 
 BOOTPART="${PART_PREF}1"
 SWAP="${PART_PREF}2"
 SYSPART="${PART_PREF}3"
+USERPART="${PART_PREF}4"
 
 if [[ "$BOOTMODE" == "UEFI" ]]; then
 	mkfs.fat -F32 "$BOOTPART"
 fi
 
-mkfs.btrfs -f "$SYSPART"
+mkfs.ext4 "$SYSPART"
+mkfs.ext4 "$USERPART"
 mkswap "$SWAP"
 swapon "$SWAP"
 
 mount "$SYSPART" /mnt
-btrfs subvolume create /mnt/@
-btrfs subvolume create /mnt/@home
-umount /mnt
-
-mount -o subvol=@ "$SYSPART" /mnt
 mkdir -p /mnt/home
-mount -o subvol=@home "$SYSPART" /mnt/home
+mount "$USERPART" /mnt/home
 
 if [[ "$BOOTMODE" == "UEFI" ]]; then
 	mkdir -p /mnt/boot
@@ -70,7 +68,7 @@ fi
 reflector --latest 20 --sort rate --age 12 \
 	--protocol https --save /etc/pacman.d/mirrorlist
 
-pacstrap -K /mnt "${INSTALL[@]}"
+pacstrap -K /mnt "${BASE[@]}"
 
 # Generate the file system table
 genfstab -U /mnt >> /mnt/etc/fstab
