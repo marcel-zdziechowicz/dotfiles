@@ -25,8 +25,11 @@ done
 SUDO_LOOP_PID=$!
 trap "kill $SUDO_LOOP_PID" EXIT
 
-pwd
-whoami
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -sic --noconfirm
+cd ..
+rm -rf yay-bin
 
 # pacman -Syu --noconfirm "${PACMAN_PKGS[@]}"
 # yay -S  --noconfirm --answerdiff None --answerclean None
