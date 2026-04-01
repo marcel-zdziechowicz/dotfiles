@@ -11,3 +11,5 @@ chmod +x ./scripts/live-iso-conf.sh
 arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/install.sh"
 INSTALL_PATH="/home/${USERNAME}/dotfiles/scripts/install.sh"
 arch-chroot /mnt sudo -u "$USERNAME" "$INSTALL_PATH"
+
+# TODO: Remove NOPASSWD from /etc/sudoers
