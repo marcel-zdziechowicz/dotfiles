@@ -34,6 +34,8 @@ HOSTNAME="machine"
 PASSWORD=""
 ROOT_PASSWD=""
 
+WALLPAPER="river_forrest.jpg"
+
 # This is very "tape and glue"
 # so be cautious.
 
@@ -81,8 +83,8 @@ NETIF=""
 
 BASE=(
 	base base-devel linux linux-firmware sudo
-	zsh networkmanager neovim python
-	man man-pages texinfo intel-ucode
+	zsh networkmanager neovim python git
+	man-db man-pages texinfo intel-ucode
 )
 
 INSTALL=(
