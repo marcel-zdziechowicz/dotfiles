@@ -1,0 +1,27 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["custom/spotify"],
+  "modules-right": ["clock", "battery", "tray"],
+  "hyprland/workspaces": {
+    "cursor": true
+  },
+  "tray": {
+    "cursor": true
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%d/%m/%Y}",
+    "tooltip": false
+  },
+  "custom/spotify": {
+    "exec-if": "pgrep spotify",
+    "exec": "/usr/bin/python3 /home/coffee/.config/waybar/scripts/mediaplayer.py --player spotify",
+    "format": "{}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify previous",
+    "on-click-middle": "playerctl -p spotify play-pause",
+    "on-click-right": "playerctl -p spotify next"
+  }
+}

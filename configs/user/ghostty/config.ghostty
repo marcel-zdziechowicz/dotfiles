@@ -1,0 +1,4 @@
+config-file = colors.ghostty
+font-family = JetBrains Mono
+command = /bin/zsh
+background-opacity = 0.85

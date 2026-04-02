@@ -1,0 +1,45 @@
+background = "#02121C"
+foreground = "#FEF6D3"
+selection-background = "#F5E9B8"
+selection-foreground = "#02121C"
+cursor-color = "#DED4C4"
+
+# # Normal colors (bardziej kontrastowe)
+# palette = 0=#00010B
+# palette = 1=#FCDA4E
+# palette = 2=#EBCA7A
+# palette = 3=#FA9666
+# palette = 4=#6AD1A4
+# palette = 5=#BF6B79
+# palette = 6=#20C1C7
+# palette = 7=#F5E9B8
+#
+# # Bright colors (jeszcze bardziej "wybijające się")
+# palette = 8=#ACA381
+# palette = 9=#BDA33A
+# palette = 10=#B09A5C
+# palette = 11=#BC704D
+# palette = 12=#509D7A
+# palette = 13=#8F505E
+# palette = 14=#189295
+# palette = 15=#F5E9B8
+
+# Normal colors
+palette = 0=#00010B
+palette = 1=#BDA33A
+palette = 2=#B09A5C
+palette = 3=#BC704D
+palette = 4=#509D7A
+palette = 5=#8F505E
+palette = 6=#189295
+palette = 7=#F5E9B8
+
+# Bright colors
+palette = 8=#ACA381
+palette = 9=#FCDA4E
+palette = 10=#EBCA7A
+palette = 11=#FA9666
+palette = 12=#6AD1A4
+palette = 13=#BF6B79
+palette = 14=#20C1C7
+palette = 15=#F5E9B8

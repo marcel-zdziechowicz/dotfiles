@@ -1,0 +1,42 @@
+# full - resized - wal - thumb -  fastresize - kmeans
+backend = "thumb"
+
+# lab - labmixed - lch - lchmixed - salience
+color_space = "lab"
+
+# Use the most prominent colors in a way that makes sense, a scheme color palette:
+# dark - dark16 - darkcomp - darkcomp16
+# light - light16 - lightcomp - lightcomp16
+# harddark - harddark16 - harddarkcomp - harddarkcomp16
+# softdark - softdark16 - softdarkcomp - softdarkcomp16
+# softlight - softlight16 - softlightcomp - softlightcomp16
+# saliencedark - saliencedarkbalanced - saliencedarkdistributed - saliencedarklow (each has the 16 variations)
+# salienceligh - saliencelightbalanced - saliencelightdistributed - saliencelightlow (each has the 16 variations)
+palette = "harddark16"
+
+check_contrast = true
+saturation = 40
+threshold = 10
+#alpha = 100
+#no_hooks = true
+
+[templates]
+# NOTE: prefer '' over "" for paths, avoids escaping.
+# template: A RELATIVE path that points to `~/.config/wallust/template` (depends on platform)
+# target: ABSOLUTE path in which to place a file with generated templated values.
+# ¡ If either one is a directory, then both SHOULD be one. !
+# zathura = { template = 'zathura', target = '~/.config/zathura/zathurarc' }
+
+fuzzel = { template = 'fuzzel.ini', target = '/home/coffee/.config/fuzzel/colors.ini' }
+ghostty = { template = 'ghostty.conf', target = '/home/coffee/.config/ghostty/colors.ghostty' }
+hyprland = { template = 'hyprland.conf', target = '/home/coffee/.config/hypr/colors.conf' }
+gtk-30 = { template = 'gtk-3.0.css', target = '/home/coffee/.local/share/themes/wallust/gtk-3.0/gtk.css' }
+gtk-32 = { template = 'gtk-3.20.css', target = '/home/coffee/.local/share/themes/wallust/gtk-3.20/gtk.css' }
+gtk-40 = { template = 'gtk-4.0.css', target = '/home/coffee/.local/share/themes/wallust/gtk-4.0/gtk.css' }
+spicetify = { template = 'color-spicetify.ini', target = '/home/coffee/.config/spicetify/Themes/text/color.ini' }
+neopywal = { template = 'colors_neopywal.vim', target = '/home/coffee/.cache/wallust/colors_neopywal.vim' }
+
+[hooks]
+spicetify = 'spicetify apply --no-restart &>/dev/null'
+# Run commands when wallust is invoked. Useful to avoid scripting.
+#wallpaper = """swww img "$(find ~/Media/Pictures/Wallpapers -iregex '.*.\\(jpg\\|jpeg\\|png\\|gif\\)' -type f | shuf -n 1)" """

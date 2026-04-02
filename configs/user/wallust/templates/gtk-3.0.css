@@ -1,0 +1,60 @@
+/* 1. LOAD THE LOGIC FIRST */
+@import url("file:///usr/share/themes/Breeze-Dark/gtk-3.0/gtk.css");
+
+/* 2. CORE WALLUST PALETTE */
+@define-color w_bg {{background}};
+@define-color w_fg {{foreground}};
+@define-color w_acc {{color4}};
+@define-color w_brd {{color8}};
+
+/* 3. THE BREEZE NEBULA OVERRIDE */
+/* We map the specific Breeze internal variables to your Wallust colors */
+
+@define-color theme_fg_color_breeze @w_fg;
+@define-color theme_text_color_breeze @w_fg;
+@define-color theme_bg_color_breeze @w_bg;
+@define-color theme_base_color_breeze @w_bg;
+
+/* Selections & Accents */
+@define-color theme_view_hover_decoration_color_breeze @w_acc;
+@define-color theme_hovering_selected_bg_color_breeze @w_acc;
+@define-color theme_selected_bg_color_breeze @w_acc;
+@define-color theme_selected_fg_color_breeze @w_bg;
+@define-color theme_view_active_decoration_color_breeze @w_acc;
+
+/* Insensitive / Disabled (Using Wallust with Transparency) */
+@define-color insensitive_bg_color_breeze alpha(@w_bg, 0.5);
+@define-color insensitive_fg_color_breeze alpha(@w_fg, 0.35);
+@define-color insensitive_base_color_breeze alpha(@w_fg, 0.35);
+
+/* Backdrop / Unfocused Windows */
+@define-color theme_unfocused_fg_color_breeze @w_fg;
+@define-color theme_unfocused_bg_color_breeze @w_bg;
+@define-color theme_unfocused_base_color_breeze @w_bg;
+@define-color theme_unfocused_selected_bg_color_breeze alpha(@w_acc, 0.5);
+
+/* Borders */
+@define-color borders_breeze @w_brd;
+@define-color unfocused_borders_breeze @w_brd;
+
+/* Button Specifics */
+@define-color theme_button_background_normal_breeze alpha(@w_fg, 0.05);
+@define-color theme_button_foreground_normal_breeze @w_fg;
+@define-color theme_button_decoration_hover_breeze @w_acc;
+@define-color theme_button_decoration_focus_breeze @w_acc;
+
+/* Titlebars (Important for Hyprland/GTK consistency) */
+@define-color theme_titlebar_background_breeze @w_bg;
+@define-color theme_titlebar_foreground_breeze @w_fg;
+
+/* Tooltips */
+@define-color tooltip_text_breeze @w_fg;
+@define-color tooltip_background_breeze @w_bg;
+
+/* 4. THE FALLBACK MAP (Ensures standard GTK apps listen) */
+@define-color theme_fg_color @theme_fg_color_breeze;
+@define-color theme_text_color @theme_text_color_breeze;
+@define-color theme_bg_color @theme_bg_color_breeze;
+@define-color theme_base_color @theme_base_color_breeze;
+@define-color theme_selected_bg_color @theme_selected_bg_color_breeze;
+@define-color theme_selected_fg_color @theme_selected_fg_color_breeze;
