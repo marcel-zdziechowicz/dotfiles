@@ -36,4 +36,4 @@ ARGS=(--noconfirm --answerdiff None
 	--answerclean None --useask
 	--mflags "--noconfirm --skippgpcheck"
 )
-yay -Sy "${AUR_PKGS[@]}" "${ARGS[@]}"
+yes | yay -Sy "${AUR_PKGS[@]}" "${ARGS[@]}"
