@@ -12,12 +12,13 @@ arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/install.sh"
 INSTALL_PATH="/home/${USERNAME}/dotfiles/scripts/install.sh"
 arch-chroot /mnt sudo -u "$USERNAME" "$INSTALL_PATH"
 
+arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/sys-conf.sh"
+SYSCONF_PATH="/home/${USERNAME}/dotfiles/scripts/sys-conf.sh"
+arch-chroot /mnt sudo -u "$USERNAME" "$SYSCONF_PATH"
+
 arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/user-conf.sh"
 USERCONF_PATH="/home/${USERNAME}/dotfiles/scripts/user-conf.sh"
 arch-chroot /mnt sudo -u "$USERNAME" "$USERCONF_PATH"
-
-# SYSCONF_PATH="/home/${USERNAME}/dotfiles/scripts/sys-conf.sh"
-# arch-chroot /mnt sudo -u "$USERNAME" "$SYSCONF_PATH"
 
 # TODO: Remove NOPASSWD from /etc/sudoers
 # chmod +x ./scripts/cleanup.sh

@@ -78,7 +78,7 @@ SSID=""
 PASSPHRASE=""
 
 # Your wireless network interface
-# (usually wlan0)
+# (usually wlan0 or enp0s3)
 NETIF=""
 
 BASE=(
@@ -86,7 +86,7 @@ BASE=(
 	zsh networkmanager neovim python git
 	man-db man-pages texinfo intel-ucode
 )
-# seer-gdb 
+
 INSTALL=(
 	parted cups brlaser brother-dcp-l2530dw
 	system-config-printer blueman bluez-utils
@@ -105,5 +105,5 @@ INSTALL=(
 	waybar python-gobject wallust-git otf-font-awesome
 	papirus-icon-theme moka-icon-theme-git
 	arc-icon-theme-git bibata-cursor-theme
-	breeze-gtk
+	breeze-gtk seer-gdb 
 )
