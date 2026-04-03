@@ -91,19 +91,19 @@ INSTALL=(
 	parted cups brlaser brother-dcp-l2530dw
 	system-config-printer blueman bluez-utils
 	alsa-utils pipewire-alsa pipewire-jack
-	pipewire-pulse wireplumber dnsmasq
-	fail2ban bridge-utils iptables-nft
-	iwd network-manager-applet networkmanager
-	ufw dunst arc-icon-theme-git bibata-cursor-theme
-	breeze-gtk cliphist eog fuzzel grim
-	hypridle hyprland hyprlock hyprpaper mpv
-	brave-bin nwg-look polkit-kde-agent qt6ct
-	thunar spicetify-cli spicetify-marketplace-bin
-	spotify slurp wl-clipboard xdg-desktop-portal-hyprland
-	wallust-git otf-font-awesome papirus-icon-theme waybar
-	libvirt qemu-full virt-manager brightnessctl dmenu
-	python-gobject nodejs npm bat btop clang eza
-	fzf gdb ghostty git github-cli neovim luarocks
-	qalculate-gtk zoxide yazi ripgrep yay yay-debug
-	7zip seer-gdb unzip wget zip
+	pipewire-pulse wireplumber dnsmasq fail2ban
+	bridge-utils iptables-nft network-manager-applet
+	networkmanager ufw dunst libvirt qemu-full
+	virt-manager brightnessctl dmenu nodejs
+	npm bat btop clang eza fzf gdb ghostty git
+	github-cli neovim luarocks qalculate-gtk
+	zoxide yazi ripgrep 7zip seer-gdb unzip
+	wget zip cliphist eog fuzzel grim hypridle
+	hyprland hyprlock hyprpaper mpv brave-bin
+	nwg-look polkit-kde-agent qt6ct thunar spotify
+	slurp wl-clipboard xdg-desktop-portal-hyprland
+	waybar python-gobject wallust-git otf-font-awesome
+	papirus-icon-theme moka-icon-theme-git
+	arc-icon-theme-git bibata-cursor-theme
+	breeze-gtk
 )

@@ -8,11 +8,11 @@ source "${SOURCE_DIR}/variables.sh"
 chmod +x ./scripts/live-iso-conf.sh
 ./scripts/live-iso-conf.sh
 
-arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/*"
-
+arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/install.sh"
 INSTALL_PATH="/home/${USERNAME}/dotfiles/scripts/install.sh"
 arch-chroot /mnt sudo -u "$USERNAME" "$INSTALL_PATH"
 
+arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/user-conf.sh"
 USERCONF_PATH="/home/${USERNAME}/dotfiles/scripts/user-conf.sh"
 arch-chroot /mnt sudo -u "$USERNAME" "$USERCONF_PATH"
 
