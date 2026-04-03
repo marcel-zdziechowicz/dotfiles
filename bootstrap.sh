@@ -6,7 +6,7 @@ SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SOURCE_DIR}/variables.sh"
 
 chmod +x ./scripts/live-iso-conf.sh
-./scripts/live-iso-conf.sh
+./scripts/live-iso-conf.sh || true
 
 arch-chroot /mnt chmod +x "/home/${USERNAME}/dotfiles/scripts/install.sh"
 INSTALL_PATH="/home/${USERNAME}/dotfiles/scripts/install.sh"

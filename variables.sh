@@ -86,7 +86,7 @@ BASE=(
 	zsh networkmanager neovim python git
 	man-db man-pages texinfo intel-ucode
 )
-
+# seer-gdb 
 INSTALL=(
 	parted cups brlaser brother-dcp-l2530dw
 	system-config-printer blueman bluez-utils
@@ -97,7 +97,7 @@ INSTALL=(
 	virt-manager brightnessctl dmenu nodejs
 	npm bat btop clang eza fzf gdb ghostty git
 	github-cli neovim luarocks qalculate-gtk
-	zoxide yazi ripgrep 7zip seer-gdb unzip
+	zoxide yazi ripgrep 7zip unzip
 	wget zip cliphist eog fuzzel grim hypridle
 	hyprland hyprlock hyprpaper mpv brave-bin
 	nwg-look polkit-kde-agent qt6ct thunar spotify

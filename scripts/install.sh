@@ -31,9 +31,9 @@ makepkg -sic --noconfirm
 cd ..
 rm -rf yay-bin
 
-yes | sudo pacman -Syu "${PACMAN_PKGS[@]}"
+yes | sudo pacman -Syu "${PACMAN_PKGS[@]}" || true
 ARGS=(--noconfirm --answerdiff None 
 	--answerclean None --useask
 	--mflags "--noconfirm --skippgpcheck"
 )
-yes | yay -Sy "${ARGS[@]}" "${AUR_PKGS[@]}"
+yes | yay -Sy "${ARGS[@]}" "${AUR_PKGS[@]}" || true
