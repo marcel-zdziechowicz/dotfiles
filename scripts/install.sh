@@ -37,3 +37,6 @@ ARGS=(--noconfirm --answerdiff None
 	--mflags "--noconfirm --skippgpcheck"
 )
 yes | yay -Sy "${ARGS[@]}" "${AUR_PKGS[@]}" || true
+
+#Install spicetify
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | zsh
