@@ -105,5 +105,5 @@ INSTALL=(
 	waybar python-gobject wallust-git otf-font-awesome
 	papirus-icon-theme moka-icon-theme-git
 	arc-icon-theme-git bibata-cursor-theme
-	breeze-gtk seer-gdb 
+	breeze-gtk seer-gdb ttf-jetbrains-mono-nerd 
 )
