@@ -21,7 +21,7 @@ pacman -Sy git && git clone https://codeberg.org/marcel-zdziechowicz/dotfiles.gi
 Then edit `dotfiles/scripts/variables.sh` with the editor of your choice and set the variables to fit your needs best. For example:
 
 ```sh
-vim dotfiles/variables.sh
+vim dotfiles/scripts/variables.sh
 ```
 
 Now the last part of the live ISO config is running the script
