@@ -121,7 +121,3 @@ arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 REPO_PATH="$(cd "${SOURCE_DIR}/../" && pwd)"
 cp -r "$REPO_PATH" "/mnt/home/${USERNAME}/"
 arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}/dotfiles"
-
-#arch-chroot /mnt systemctl enable NetworkManager
-#arch-chroot /mnt systemctl start NetworkManager
-#arch-chroot /mnt nmcli device wifi connect "$SSID" password "$PASSPHRASE"
