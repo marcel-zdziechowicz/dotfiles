@@ -14,7 +14,7 @@ ARGS=(--noconfirm --answerdiff None
 	--mflags "--noconfirm" --sudoloop
 )
 
-if ! yay -S "${ARGS[@]}" "${AUR_PKGS[@]}"; then
+if ! yay -S "${ARGS[@]}" "${INSTALL[@]}"; then
 	echo "I just fucking wanted to install packages..."
 fi
 
