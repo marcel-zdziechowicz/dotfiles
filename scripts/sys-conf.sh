@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-source ~/dotfiles/variables.sh
+source ~/dotfiles/scripts/variables.sh
 
 sudo ufw enable
 sudo ufw default deny incoming
