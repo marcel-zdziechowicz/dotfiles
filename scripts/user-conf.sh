@@ -17,7 +17,7 @@ ln -s ~/dotfiles/configs/user/ghostty	~/.config/ghostty
 rm -rf ~/.config/dunst
 ln -s ~/dotfiles/configs/user/dunst	~/.config/dunst
 
-rm -rf ~/.config/fuzzel/
+rm -rf ~/.config/fuzzel
 ln -s ~/dotfiles/configs/user/fuzzel ~/.config/fuzzel
 
 rm -rf ~/.config/waybar
@@ -39,8 +39,8 @@ rm -rf ~/.config/zathura
 ln -s ~/dotfiles/configs/user/zathura ~/.config/zathura
 
 # Spicetify config
-chmod a+wr /opt/spotify
-chmod a+wr /opt/spotify/Apps -R
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
 spicetify backup apply
 
 # Associate file types with proper applications
