@@ -31,7 +31,7 @@ fuzzel = { template = 'fuzzel.ini', target = '/home/coffee/.config/fuzzel/colors
 ghostty = { template = 'ghostty.conf', target = '/home/coffee/.config/ghostty/colors.ghostty' }
 
 # Generating color.conf for legacy config
-hyprland = { template = 'hyprland-colors.conf', target = '/home/coffee/.config/hypr/legacy-config/colors.conf' }
+hyprland_legacy = { template = 'hyprland-colors.conf', target = '/home/coffee/.config/hypr/legacy-config/colors.conf' }
 hyprland = { template = 'hyprland-colors.lua', target = '/home/coffee/.config/hypr/colors.lua' }
 
 gtk-40 = { template = 'gtk-4.0.css', target = '/home/coffee/.local/share/themes/wallust/gtk-4.0/gtk.css' }
