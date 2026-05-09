@@ -114,7 +114,7 @@ if [[ "$BOOTMODE" == "BIOS" ]]; then
 	arch-chroot /mnt grub-install --target=i386-pc "$DISK_DEV"
 else
 	arch-chroot /mnt grub-install --target=x86_64-efi \
-		--efi-directory=esp --bootloader-id=GRUB
+		--efi-directory=/boot --bootloader-id=GRUB
 fi
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
@@ -123,6 +123,6 @@ REPO_PATH="$(cd "${SOURCE_DIR}/../" && pwd)"
 cp -r "$REPO_PATH" "/mnt/home/${USERNAME}/"
 arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}/dotfiles"
 
-arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt systemctl start NetworkManager
-arch-chroot /mnt nmcli device wifi connect "$SSID" password "$PASSPHRASE"
+#arch-chroot /mnt systemctl enable NetworkManager
+#arch-chroot /mnt systemctl start NetworkManager
+#arch-chroot /mnt nmcli device wifi connect "$SSID" password "$PASSPHRASE"
