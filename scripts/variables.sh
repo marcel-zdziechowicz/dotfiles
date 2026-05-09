@@ -105,7 +105,7 @@ INSTALL=(
 
 	cups brlaser brother-dcp-l2530dw system-config-printer
 
-	# hyprland-git
+	hyprland
 	xdg-desktop-portal-hyprland
 	polkit-kde-agent
 	qt6ct
@@ -114,12 +114,12 @@ INSTALL=(
 	dunst
 	fuzzel
 	grim
-	# hypridle-git
-	# hyprlock-git
-	# hyprpaper-git
+	hypridle
+	hyprlock
+	hyprpaper
 	slurp
-	# wallust-git
-	# waybar
+	wallust-git
+	waybar
 	wl-clipboard
 
 	thunar
