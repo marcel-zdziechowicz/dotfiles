@@ -88,23 +88,80 @@ BASE=(
 )
 
 INSTALL=(
-	parted cups brlaser brother-dcp-l2530dw
-	system-config-printer blueman mupdf proton-vpn
+	parted openssh wget zip unzip 7zip reflector
+	dnsmasq fail2ban bridge-utils iptables-nft ufw
+
+	libvirt qemu-full virt-manager
+
 	alsa-utils pipewire-alsa pipewire-jack
-	pipewire-pulse wireplumber dnsmasq fail2ban
-	bridge-utils iptables-nft network-manager-applet
-	networkmanager ufw dunst libvirt qemu-full
-	virt-manager brightnessctl dmenu nodejs
-	npm bat btop clang eza fzf gdb ghostty git
-	neovim qalculate-gtk openssh tmux strace
-	zoxide yazi ripgrep 7zip unzip mesa-utils
-	wget zip cliphist eog fuzzel grim hypridle-git
-	hyprland-git hyprlock-git hyprpaper-git mpv brave-bin
-	nwg-look polkit-kde-agent qt6ct thunar spotify
-	slurp wl-clipboard xdg-desktop-portal-hyprland
-	waybar-git python-gobject wallust-git otf-font-awesome
-	papirus-icon-theme moka-icon-theme-git cloc
-	arc-icon-theme-git bibata-cursor-theme reflector
-	breeze-gtk seer-gdb ttf-jetbrains-mono-nerd 
-	thunar-archive-plugin file-roller
+	pipewire-pulse wireplumber
+
+	bat btop clang cloc eza fzf gdb
+	git neovim nodejs npm ripgrep
+	strace tmux yazi zoxide
+	# seer-gdb
+
+	mupdf qalculate-gtk brightnessctl mesa-utils
+
+	cups brlaser brother-dcp-l2530dw system-config-printer
+
+	# hyprland-git
+	xdg-desktop-portal-hyprland
+	polkit-kde-agent
+	qt6ct
+
+	cliphist
+	dunst
+	fuzzel
+	grim
+	# hypridle-git
+	# hyprlock-git
+	# hyprpaper-git
+	slurp
+	# wallust-git
+	# waybar
+	wl-clipboard
+
+	thunar
+	thunar-archive-plugin
+	file-roller
+	eog
+	nwg-look
+
+	otf-font-awesome
+	ttf-jetbrains-mono-nerd
+	papirus-icon-theme
+	moka-icon-theme-git
+	arc-icon-theme-git
+	bibata-cursor-theme
+	breeze-gtk
+
+	ghostty
+	mpv
+	brave-bin
+	spotify
+	blueman
+	network-manager-applet
+	python-gobject
+	dmenu
+
+	#parted cups brlaser brother-dcp-l2530dw
+	#system-config-printer blueman mupdf proton-vpn
+	#alsa-utils pipewire-alsa pipewire-jack
+	#pipewire-pulse wireplumber dnsmasq fail2ban
+	#bridge-utils iptables-nft network-manager-applet
+	#networkmanager ufw dunst libvirt qemu-full
+	#virt-manager brightnessctl dmenu nodejs
+	#npm bat btop clang eza fzf gdb ghostty git
+	#neovim qalculate-gtk openssh tmux strace
+	#zoxide yazi ripgrep 7zip unzip mesa-utils
+	#wget zip cliphist eog fuzzel grim hypridle-git
+	#hyprland-git hyprlock-git hyprpaper-git mpv brave-bin
+	#nwg-look polkit-kde-agent qt6ct thunar spotify
+	#slurp wl-clipboard xdg-desktop-portal-hyprland
+	#waybar python-gobject wallust-git otf-font-awesome
+	#papirus-icon-theme moka-icon-theme-git cloc
+	#arc-icon-theme-git bibata-cursor-theme reflector
+	#breeze-gtk seer-gdb ttf-jetbrains-mono-nerd 
+	#thunar-archive-plugin file-roller
 )
