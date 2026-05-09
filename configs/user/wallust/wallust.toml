@@ -12,7 +12,7 @@ color_space = "salience"
 # softlight - softlight16 - softlightcomp - softlightcomp16
 # saliencedark - saliencedarkbalanced - saliencedarkdistributed - saliencedarklow (each has the 16 variations)
 # salienceligh - saliencelightbalanced - saliencelightdistributed - saliencelightlow (each has the 16 variations)
-palette = "harddark16"
+palette = "salience"
 
 check_contrast = true
 saturation = 40
