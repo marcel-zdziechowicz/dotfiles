@@ -3,38 +3,20 @@ set -euo pipefail
 
 source ~/dotfiles/scripts/variables.sh
 
-PACMAN_PKGS=()
-AUR_PKGS=()
-
-for pkg in "${INSTALL[@]}"; do
-	if pacman -Si "$pkg" &>/dev/null; then
-		PACMAN_PKGS+=("$pkg")
-	else
-		AUR_PKGS+=("$pkg")
-	fi
-done
-
-(
-	while true; do
-		echo "$PASSWORD" | sudo -S true
-		sleep 60
-	done
-) &
-SUDO_LOOP_PID=$!
-trap "kill $SUDO_LOOP_PID" EXIT
-
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -sic --noconfirm
 cd ..
 rm -rf yay-bin
 
-yes | sudo pacman -Syu "${PACMAN_PKGS[@]}" || true
 ARGS=(--noconfirm --answerdiff None 
 	--answerclean None --useask
-	--mflags "--noconfirm --skippgpcheck"
+	--mflags "--noconfirm" --sudoloop
 )
-yes | yay -Sy "${ARGS[@]}" "${AUR_PKGS[@]}" || true
+
+if ! yay -S "${ARGS[@]}" "${AUR_PKGS[@]}"; then
+	echo "I just fucking wanted to install packages..."
+fi
 
 # Install spicetify
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
