@@ -2,9 +2,11 @@
 set -euo pipefail
 
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${SOURCE_DIR}/../variables.sh"
+chmod +x "${SOURCE_DIR}/variables.sh"
+source "${SOURCE_DIR}/variables.sh"
+chmod +x "${SOURCE_DIR}/*"
 
-# Following the ArchWiki Installation guide
+## Following the ArchWiki Installation guide
 loadkeys "$TTY_KEYMAP"
 setfont  "$TTY_FONT"
 
@@ -76,7 +78,6 @@ genfstab -U /mnt >> /mnt/etc/fstab
 # Setting the timezone
 arch-chroot /mnt ln -sf "/usr/share/zoneinfo/${AREA}/${LOCATION}" /etc/localtime
 arch-chroot /mnt hwclock --systohc
-# TODO: Configure time synchronization
 
 # Locales
 for LOC in "${LOCALES[@]}"; do
@@ -94,7 +95,7 @@ arch-chroot /mnt useradd -m -G wheel -s /bin/zsh "$USERNAME"
 echo "${USERNAME}:${PASSWORD}" | arch-chroot /mnt chpasswd
 echo "root:${ROOT_PASSWD}" | arch-chroot /mnt chpasswd
 
-#temporarily disable password prompts
+# Temporarily disable password prompts
 arch-chroot /mnt sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
 
 # Regenerating initramfs
@@ -119,6 +120,9 @@ fi
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 REPO_PATH="$(cd "${SOURCE_DIR}/../" && pwd)"
-
 cp -r "$REPO_PATH" "/mnt/home/${USERNAME}/"
 arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}/dotfiles"
+
+arch-chroot /mnt systemctl enable NetworkManager
+arch-chroot /mnt systemctl start NetworkManager
+arch-chroot /mnt nmcli device wifi connect "$SSID" password "$PASSPHRASE"

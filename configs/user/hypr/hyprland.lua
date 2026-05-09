@@ -1,0 +1,8 @@
+require 'lua.env'
+require 'lua.perms'
+require 'lua.autostart'
+require 'lua.keybinds'
+require 'lua.style'
+require 'lua.monitors'
+require 'lua.input'
+require 'lua.windowrules'

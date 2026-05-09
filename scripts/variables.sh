@@ -59,10 +59,10 @@ PART_PREF="/dev/sda"
 # system partition. Note, this value
 # cannot be less than 513MiB on UEFI
 # systems and 3MiB on BIOS machines
-SWAP_END="4099MiB"
+SWAP_END="32771MiB"
 
 # Set the system partition size
-SYSPART_END="69635MiB"
+SYSPART_END="163843MiB"
 
 # You need to specify the network
 # only if you don't have Ethernet
@@ -79,7 +79,7 @@ PASSPHRASE=""
 
 # Your wireless network interface
 # (usually wlan0 or enp0s3)
-NETIF=""
+NETIF="wlan0"
 
 BASE=(
 	base base-devel linux linux-firmware sudo
@@ -89,21 +89,22 @@ BASE=(
 
 INSTALL=(
 	parted cups brlaser brother-dcp-l2530dw
-	system-config-printer blueman bluez-utils
+	system-config-printer blueman mupdf proton-vpn
 	alsa-utils pipewire-alsa pipewire-jack
 	pipewire-pulse wireplumber dnsmasq fail2ban
 	bridge-utils iptables-nft network-manager-applet
 	networkmanager ufw dunst libvirt qemu-full
 	virt-manager brightnessctl dmenu nodejs
 	npm bat btop clang eza fzf gdb ghostty git
-	github-cli neovim luarocks qalculate-gtk
-	zoxide yazi ripgrep 7zip unzip
-	wget zip cliphist eog fuzzel grim hypridle
-	hyprland hyprlock hyprpaper mpv brave-bin
+	neovim qalculate-gtk openssh tmux strace
+	zoxide yazi ripgrep 7zip unzip mesa-utils
+	wget zip cliphist eog fuzzel grim hypridle-git
+	hyprland-git hyprlock-git hyprpaper-git mpv brave-bin
 	nwg-look polkit-kde-agent qt6ct thunar spotify
 	slurp wl-clipboard xdg-desktop-portal-hyprland
-	waybar python-gobject wallust-git otf-font-awesome
-	papirus-icon-theme moka-icon-theme-git
-	arc-icon-theme-git bibata-cursor-theme
+	waybar-git python-gobject wallust-git otf-font-awesome
+	papirus-icon-theme moka-icon-theme-git cloc
+	arc-icon-theme-git bibata-cursor-theme reflector
 	breeze-gtk seer-gdb ttf-jetbrains-mono-nerd 
+	thunar-archive-plugin file-roller
 )

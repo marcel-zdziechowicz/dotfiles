@@ -1,9 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-cd ~/dotfiles
-CURR_DIR="$(pwd)"
-source "${CURR_DIR}/variables.sh"
+source ~/dotfiles/scripts/variables.sh
 
 PACMAN_PKGS=()
 AUR_PKGS=()
@@ -38,5 +36,5 @@ ARGS=(--noconfirm --answerdiff None
 )
 yes | yay -Sy "${ARGS[@]}" "${AUR_PKGS[@]}" || true
 
-#Install spicetify
+# Install spicetify
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | zsh

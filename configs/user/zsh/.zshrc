@@ -22,9 +22,6 @@ bindkey -e
 bindkey '^[[Z' autosuggest-accept
 
 export EDITOR=nvim
-export QT_QPA_PLATFORM=wayland
-export QT_QPA_PLATFORMTHEME=gtk3
-
 eval "$(zoxide init zsh)"
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

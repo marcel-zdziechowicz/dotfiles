@@ -2,7 +2,7 @@
 backend = "thumb"
 
 # lab - labmixed - lch - lchmixed - salience
-color_space = "lab"
+color_space = "salience"
 
 # Use the most prominent colors in a way that makes sense, a scheme color palette:
 # dark - dark16 - darkcomp - darkcomp16
@@ -29,12 +29,17 @@ threshold = 10
 
 fuzzel = { template = 'fuzzel.ini', target = '/home/coffee/.config/fuzzel/colors.ini' }
 ghostty = { template = 'ghostty.conf', target = '/home/coffee/.config/ghostty/colors.ghostty' }
-hyprland = { template = 'hyprland.conf', target = '/home/coffee/.config/hypr/colors.conf' }
-gtk-30 = { template = 'gtk-3.0.css', target = '/home/coffee/.local/share/themes/wallust/gtk-3.0/gtk.css' }
-gtk-32 = { template = 'gtk-3.20.css', target = '/home/coffee/.local/share/themes/wallust/gtk-3.20/gtk.css' }
+
+# Generating color.conf for legacy config
+hyprland = { template = 'hyprland-colors.conf', target = '/home/coffee/.config/hypr/legacy-config/colors.conf' }
+hyprland = { template = 'hyprland-colors.lua', target = '/home/coffee/.config/hypr/colors.lua' }
+
 gtk-40 = { template = 'gtk-4.0.css', target = '/home/coffee/.local/share/themes/wallust/gtk-4.0/gtk.css' }
+gtk-32 = { template = 'gtk-3.20.css', target = '/home/coffee/.local/share/themes/wallust/gtk-3.20/gtk.css' }
+gtk-30 = { template = 'gtk-3.0.css', target = '/home/coffee/.local/share/themes/wallust/gtk-3.0/gtk.css' }
+
 spicetify = { template = 'color-spicetify.ini', target = '/home/coffee/.config/spicetify/Themes/text/color.ini' }
-neopywal = { template = 'colors_neopywal.vim', target = '/home/coffee/.cache/wallust/colors_neopywal.vim' }
+neopywal = { template = 'colors-neopywal.vim', target = '/home/coffee/.cache/wallust/colors_neopywal.vim' }
 
 [hooks]
 spicetify = 'spicetify apply --no-restart &>/dev/null'
