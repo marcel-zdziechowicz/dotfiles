@@ -3,6 +3,9 @@ set -euo pipefail
 
 source ~/dotfiles/scripts/variables.sh
 
+sudo systemctl enable --now NetworkManager
+sudo nmcli device wifi connect "$SSID" password "$PASSPHRASE"
+
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
 makepkg -sic --noconfirm
