@@ -2,9 +2,8 @@
 set -euo pipefail
 
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-chmod +x "${SOURCE_DIR}/variables.sh"
+chmod -R +x "$SOURCE_DIR"
 source "${SOURCE_DIR}/variables.sh"
-chmod +x "${SOURCE_DIR}/*"
 
 ## Following the ArchWiki Installation guide
 loadkeys "$TTY_KEYMAP"
