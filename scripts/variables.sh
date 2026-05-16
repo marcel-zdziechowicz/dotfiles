@@ -1,10 +1,13 @@
+# WARNING: You're using this
+# on you own responsibility.
+
 TTY_KEYMAP="pl2"
 TTY_FONT="Lat2-Terminus16"
 
 # Array of locales to set in 
-# you fresh Arch installation
-# these work for me. You can
-# find them in /etc/locale.gen
+# your fresh Arch these work
+# for me. You can find them
+# in /etc/locale.gen
 LOCALES=("en_US.UTF-8 UTF-8" "pl_PL.UTF-8 UTF-8")
 
 # This will be used as the value
@@ -15,7 +18,7 @@ LOCALE_LANG="pl_PL.UTF-8"
 # for LC_MESSAGES in /etc/locale.conf
 LOCALE_MSG="en_US.UTF-8"
 
-# Setting the correct time zone
+# Setting the correct time zone.
 # All available values for AREA are
 # in the /usr/share/zoneinfo/
 # and for the location look
@@ -30,14 +33,11 @@ HOSTNAME="machine"
 # WARNING: Do not share this file with anyone
 # and do not keep your password here. Set this
 # variable only in live iso and remove it immediately
-# after instalation
+# after instalation.
 PASSWORD=""
 ROOT_PASSWD=""
 
 WALLPAPER="river_forrest.jpg"
-
-# This is very "tape and glue"
-# so be cautious.
 
 # DISK_DEV should contain your
 # hard drive device path as 
@@ -71,20 +71,25 @@ SYSPART_END="163843MiB"
 # are ignored
 SSID=""
 
-# Please, be careful and do NOT
+# WARNING: Please, be careful and do NOT
 # share this file with PASSPHRASE
 # and potentially other credentials
 # filled
 PASSPHRASE=""
 
 # Your wireless network interface
-# (usually wlan0 or enp0s3)
+# (something like wlan0 or enp0s3)
 NETIF="wlan0"
 
 BASE=(
 	base base-devel linux linux-firmware sudo
 	zsh networkmanager neovim python git
 	man-db man-pages texinfo intel-ucode
+)
+
+OPENBSD_PKGS=(
+	i3 dmenu pcmanfm node jetbrains-mono
+	tmux feh neovim firefox kitty git
 )
 
 INSTALL=(
@@ -99,7 +104,6 @@ INSTALL=(
 	bat btop clang cloc eza fzf gdb
 	git neovim nodejs npm ripgrep
 	strace tmux yazi zoxide
-	# seer-gdb
 
 	mupdf qalculate-gtk brightnessctl mesa-utils
 
@@ -144,24 +148,5 @@ INSTALL=(
 	network-manager-applet
 	python-gobject
 	dmenu
-
-	#parted cups brlaser brother-dcp-l2530dw
-	#system-config-printer blueman mupdf proton-vpn
-	#alsa-utils pipewire-alsa pipewire-jack
-	#pipewire-pulse wireplumber dnsmasq fail2ban
-	#bridge-utils iptables-nft network-manager-applet
-	#networkmanager ufw dunst libvirt qemu-full
-	#virt-manager brightnessctl dmenu nodejs
-	#npm bat btop clang eza fzf gdb ghostty git
-	#neovim qalculate-gtk openssh tmux strace
-	#zoxide yazi ripgrep 7zip unzip mesa-utils
-	#wget zip cliphist eog fuzzel grim hypridle-git
-	#hyprland-git hyprlock-git hyprpaper-git mpv brave-bin
-	#nwg-look polkit-kde-agent qt6ct thunar spotify
-	#slurp wl-clipboard xdg-desktop-portal-hyprland
-	#waybar python-gobject wallust-git otf-font-awesome
-	#papirus-icon-theme moka-icon-theme-git cloc
-	#arc-icon-theme-git bibata-cursor-theme reflector
-	#breeze-gtk seer-gdb ttf-jetbrains-mono-nerd 
-	#thunar-archive-plugin file-roller
+	proton-vpn
 )
