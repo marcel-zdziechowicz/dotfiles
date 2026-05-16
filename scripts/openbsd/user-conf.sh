@@ -1,5 +1,7 @@
-#!/bin/usr/env bash
-DOTCONF="~/dotfiles/configs/user"
+#!/usr/bin/env bash
+DOTCONF=~/dotfiles/configs/user
+
+mkdir ~/.config
 
 rm ~/.xinitrc
 ln -s "${DOTCONF}/x11/.xinitrc" ~/.xinitrc

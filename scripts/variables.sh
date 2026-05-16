@@ -37,7 +37,7 @@ HOSTNAME="machine"
 PASSWORD=""
 ROOT_PASSWD=""
 
-WALLPAPER="river_forrest.jpg"
+WALLPAPER="temple.jpg"
 
 # DISK_DEV should contain your
 # hard drive device path as 
@@ -88,8 +88,8 @@ BASE=(
 )
 
 OPENBSD_PKGS=(
-	i3 dmenu pcmanfm node jetbrains-mono
-	tmux feh neovim firefox kitty git
+	i3 dmenu pcmanfm-qt node jetbrains-mono
+	feh neovim firefox kitty git bash
 )
 
 INSTALL=(
@@ -133,8 +133,7 @@ INSTALL=(
 	nwg-look
 
 	otf-font-awesome
-	ttf-jetbrains-mono-nerd
-	papirus-icon-theme
+	ttf-jetbrains-mono-nerd papirus-icon-theme
 	moka-icon-theme-git
 	arc-icon-theme-git
 	bibata-cursor-theme
