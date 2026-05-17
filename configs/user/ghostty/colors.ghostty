@@ -1,45 +1,45 @@
-background = "#021119"
-foreground = "#ADC7CD"
-selection-background = "#82A6AF"
-selection-foreground = "#021119"
-cursor-color = "#A0A9A0"
+background = "#010003"
+foreground = "#FA9BC1"
+selection-background = "#E388AD"
+selection-foreground = "#010003"
+cursor-color = "#C17FA9"
 
 # # Normal colors (bardziej kontrastowe)
-# palette = 0=#00010A
-# palette = 1=#2C7D90
-# palette = 2=#5572A0
-# palette = 3=#38D6D9
-# palette = 4=#349CC5
-# palette = 5=#928145
-# palette = 6=#AA5366
-# palette = 7=#82A6AF
+# palette = 0=#010103
+# palette = 1=#5446AB
+# palette = 2=#914284
+# palette = 3=#734498
+# palette = 4=#944091
+# palette = 5=#874096
+# palette = 6=#A93A69
+# palette = 7=#E388AD
 #
 # # Bright colors (jeszcze bardziej "wybijające się")
-# palette = 8=#5B747A
-# palette = 9=#2A6A7A
-# palette = 10=#486285
-# palette = 11=#2AA0A3
-# palette = 12=#2D7B99
-# palette = 13=#837342
-# palette = 14=#8B4758
-# palette = 15=#82A6AF
+# palette = 8=#A35375
+# palette = 9=#5446AB
+# palette = 10=#914284
+# palette = 11=#734498
+# palette = 12=#944091
+# palette = 13=#874096
+# palette = 14=#A93A69
+# palette = 15=#E9BBCD
 
 # Normal colors
-palette = 0=#00010A
-palette = 1=#2A6A7A
-palette = 2=#486285
-palette = 3=#2AA0A3
-palette = 4=#2D7B99
-palette = 5=#837342
-palette = 6=#8B4758
-palette = 7=#82A6AF
+palette = 0=#010103
+palette = 1=#5446AB
+palette = 2=#914284
+palette = 3=#734498
+palette = 4=#944091
+palette = 5=#874096
+palette = 6=#A93A69
+palette = 7=#E388AD
 
 # Bright colors
-palette = 8=#5B747A
-palette = 9=#2C7D90
-palette = 10=#5572A0
-palette = 11=#38D6D9
-palette = 12=#349CC5
-palette = 13=#928145
-palette = 14=#AA5366
-palette = 15=#82A6AF
+palette = 8=#A35375
+palette = 9=#5446AB
+palette = 10=#914284
+palette = 11=#734498
+palette = 12=#944091
+palette = 13=#874096
+palette = 14=#A93A69
+palette = 15=#E9BBCD

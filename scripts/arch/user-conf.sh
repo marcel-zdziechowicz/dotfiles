@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 source ~/dotfiles/scripts/variables.sh
@@ -39,9 +39,9 @@ rm -rf ~/.config/zathura
 ln -s ~/dotfiles/configs/user/zathura ~/.config/zathura
 
 # Spicetify config
-sudo chmod a+wr /opt/spotify
-sudo chmod a+wr /opt/spotify/Apps -R
-spicetify backup apply
+# sudo chmod a+wr /opt/spotify
+# sudo chmod a+wr /opt/spotify/Apps -R
+# spicetify backup apply
 
 # Associate file types with proper applications
 IMG_APP="org.gnome.eog.desktop"
@@ -90,5 +90,5 @@ xdg-mime default "$AUD_APP" audio/aac
 xdg-mime default "$AUD_APP" audio/mpeg
 xdg-mime default "$AUD_APP" audio/ogg
 
-WALLPAPER_PATH="~/dotfiles/wallpapers/${WALLPAPER}"
-wallust run "$WALLPAPER_PATH"
+WALLPAPER_PATH=~/dotfiles/wallpapers
+wallust run "${WALLPAPER_PATH}/${WALLPAPER}"

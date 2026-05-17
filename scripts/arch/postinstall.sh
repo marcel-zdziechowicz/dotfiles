@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-RUN_SCRIPT="~/dotfiles/scripts/arch"
+RUN_SCRIPT=~/dotfiles/scripts/arch
 
 chmod +x ~/dotfiles/scripts/variables.sh
 chmod -R +x "$RUN_SCRIPT"

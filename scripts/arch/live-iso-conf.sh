@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 chmod -R +x "$SOURCE_DIR"
-source "${SOURCE_DIR}/variables.sh"
+source "${SOURCE_DIR}/../variables.sh"
 
 ## Following the ArchWiki Installation guide
 loadkeys "$TTY_KEYMAP"
@@ -118,6 +118,6 @@ fi
 
 arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
-REPO_PATH="$(cd "${SOURCE_DIR}/../" && pwd)"
+REPO_PATH="$(cd "${SOURCE_DIR}/../../" && pwd)"
 cp -r "$REPO_PATH" "/mnt/home/${USERNAME}/"
 arch-chroot /mnt chown -R "${USERNAME}:${USERNAME}" "/home/${USERNAME}/dotfiles"

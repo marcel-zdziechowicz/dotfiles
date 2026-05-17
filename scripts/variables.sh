@@ -42,13 +42,13 @@ WALLPAPER="temple.jpg"
 # DISK_DEV should contain your
 # hard drive device path as 
 # seen from the live iso
-DISK_DEV="/dev/sda"
+DISK_DEV="/dev/nvme0n1"
 
 # PART_PREF is the name
 # of your partition device
 # path without its number 
 # (i.e /dev/nvme0n1p or /dev/sda)
-PART_PREF="/dev/sda"
+PART_PREF="/dev/nvme0n1p"
 
 # Defines swap partition's size.
 # The partition starts at 3MiB,
@@ -59,10 +59,10 @@ PART_PREF="/dev/sda"
 # system partition. Note, this value
 # cannot be less than 513MiB on UEFI
 # systems and 3MiB on BIOS machines
-SWAP_END="32771MiB"
+SWAP_END="8195MiB"
 
 # Set the system partition size
-SYSPART_END="163843MiB"
+SYSPART_END="110595MiB"
 
 # You need to specify the network
 # only if you don't have Ethernet
