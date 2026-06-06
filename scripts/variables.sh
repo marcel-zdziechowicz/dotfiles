@@ -148,4 +148,8 @@ INSTALL=(
 	python-gobject
 	dmenu
 	proton-vpn
+	gimp
+	inkscape
+	spicetify-bin
+	notesnook
 )

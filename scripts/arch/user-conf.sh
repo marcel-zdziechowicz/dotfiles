@@ -39,9 +39,11 @@ rm -rf ~/.config/zathura
 ln -s ~/dotfiles/configs/user/zathura ~/.config/zathura
 
 # Spicetify config
-# sudo chmod a+wr /opt/spotify
-# sudo chmod a+wr /opt/spotify/Apps -R
-# spicetify backup apply
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
+
+# After you log in to your spotify account
+# run: spicetify backup apply
 
 # Associate file types with proper applications
 IMG_APP="org.gnome.eog.desktop"

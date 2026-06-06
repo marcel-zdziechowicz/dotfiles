@@ -3,7 +3,7 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["custom/spotify"],
-  "modules-right": ["clock", "wireplumber", "tray"],
+  "modules-right": ["clock", "battery", "wireplumber", "tray"],
   "hyprland/workspaces": {
     "cursor": true
   },

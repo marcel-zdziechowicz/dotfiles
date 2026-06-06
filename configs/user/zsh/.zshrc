@@ -22,7 +22,13 @@ bindkey -e
 bindkey '^[[Z' autosuggest-accept
 
 export EDITOR=nvim
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
+
 eval "$(zoxide init zsh)"
+
+alias ls=eza
+alias cat=bat
+alias cd=z
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh

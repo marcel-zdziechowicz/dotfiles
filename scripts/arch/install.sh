@@ -23,5 +23,13 @@ if ! yay -S "${ARGS[@]}" "${INSTALL[@]}"; then
 	echo "I just fucking wanted to install packages..."
 fi
 
+ZSH_SUGGESTIONS="https://github.com/zsh-users/zsh-autosuggestions.git"
+ZSH_COMPLETIONS="https://github.com/zsh-users/zsh-completions.git"
+ZSH_SYNTAXHIGHLIGHT="https://github.com/zsh-users/zsh-syntax-highlighting"
+
+sudo git clone "$ZSH_SUGGESTIONS" /usr/share/zsh/plugins/zsh-autosuggestions
+sudo git clone "$ZSH_COMPLETIONS" /usr/share/zsh/plugins/zsh-completions
+sudo git clone "$ZSH_SYNTAXHIGHLIGHT" /usr/share/zsh/plugins/zsh-syntax-highlighting
+
 # Install spicetify
 # curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
