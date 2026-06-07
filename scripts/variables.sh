@@ -5,7 +5,7 @@ TTY_KEYMAP="pl2"
 TTY_FONT="Lat2-Terminus16"
 
 # Array of locales to set in 
-# your fresh Arch these work
+# your fresh Arch. These work
 # for me. You can find them
 # in /etc/locale.gen
 LOCALES=("en_US.UTF-8 UTF-8" "pl_PL.UTF-8 UTF-8")
@@ -42,13 +42,13 @@ WALLPAPER="temple.jpg"
 # DISK_DEV should contain your
 # hard drive device path as 
 # seen from the live iso
-DISK_DEV="/dev/nvme0n1"
+DISK_DEV="/dev/sda"
 
 # PART_PREF is the name
 # of your partition device
 # path without its number 
 # (i.e /dev/nvme0n1p or /dev/sda)
-PART_PREF="/dev/nvme0n1p"
+PART_PREF="/dev/sda"
 
 # Defines swap partition's size.
 # The partition starts at 3MiB,
@@ -59,10 +59,10 @@ PART_PREF="/dev/nvme0n1p"
 # system partition. Note, this value
 # cannot be less than 513MiB on UEFI
 # systems and 3MiB on BIOS machines
-SWAP_END="8195MiB"
+SWAP_END="33281MiB"
 
 # Set the system partition size
-SYSPART_END="110595MiB"
+SYSPART_END="135681MiB"
 
 # You need to specify the network
 # only if you don't have Ethernet
@@ -81,9 +81,12 @@ PASSPHRASE=""
 # (something like wlan0 or enp0s3)
 NETIF="wlan0"
 
+DNS_PRIMARY="1.1.1.1"
+DNS_SECONDARY="1.0.0.1"
+
 BASE=(
 	base base-devel linux linux-firmware sudo
-	zsh networkmanager neovim python git
+	zsh networkmanager neovim python git ufw
 	man-db man-pages texinfo intel-ucode
 )
 
@@ -103,9 +106,9 @@ INSTALL=(
 
 	bat btop clang cloc eza fzf gdb
 	git neovim nodejs npm ripgrep
-	strace tmux yazi zoxide
+	strace tmux yazi zoxide fd
 
-	mupdf qalculate-gtk brightnessctl mesa-utils
+	qalculate-gtk brightnessctl mesa-utils
 
 	cups brlaser brother-dcp-l2530dw system-config-printer
 
@@ -122,7 +125,7 @@ INSTALL=(
 	hyprlock
 	hyprpaper
 	slurp
-	wallust-git
+	# wallust-git
 	waybar
 	wl-clipboard
 
@@ -147,9 +150,19 @@ INSTALL=(
 	network-manager-applet
 	python-gobject
 	dmenu
-	proton-vpn
+	proton-vpn-gtk-app
 	gimp
 	inkscape
 	spicetify-bin
 	notesnook
+	# task
+	dooit
+	dooit-extras
+	matugen
+	smassh
+	bind
+	easyeffects
+	lsp-plugins-lv2
+	tcpdump
+	zathura-pdf-mupdf
 )

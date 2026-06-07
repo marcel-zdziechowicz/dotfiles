@@ -29,6 +29,7 @@ eval "$(zoxide init zsh)"
 alias ls=eza
 alias cat=bat
 alias cd=z
+alias reflect="sudo reflector --country Poland,Germany --latest 30 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-completions/zsh-completions.plugin.zsh

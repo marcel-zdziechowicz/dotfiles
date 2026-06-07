@@ -10,7 +10,7 @@
   "tray": {
     "cursor": true,
 		"icon-size": 21,
-		"spacing": 10,
+		"spacing": 10
   },
   "clock": {
     "format": "{:%H:%M}",

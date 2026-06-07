@@ -3,6 +3,8 @@ set -euo pipefail
 
 source ~/dotfiles/scripts/variables.sh
 
+systemctl --user enable --now wireplumber
+
 ln -sf ~/dotfiles/configs/user/zsh/.zshrc ~/.zshrc
 
 rm -rf ~/.config/hypr
@@ -38,16 +40,30 @@ ln -s ~/dotfiles/configs/user/gtk-3.0	~/.config/gtk-3.0
 rm -rf ~/.config/zathura
 ln -s ~/dotfiles/configs/user/zathura ~/.config/zathura
 
+rm -rf ~/.config/btop
+ln -s ~/dotfiles/configs/user/btop ~/.config/btop
+
+rm -rf ~/.config/cava
+ln -s ~/dotfiles/configs/user/cava ~/.config/cava
+
+rm -rf ~/.config/tmux
+ln -s ~/dotfiles/configs/user/tmux ~/.config/tmux
+
+rm -rf ~/.config/yazi
+ln -s ~/dotfiles/configs/user/yazi ~/.config/yazi
+
+rm -rf ~/.config/matugen
+ln -s ~/dotfiles/configs/user/matugen ~/.config/matugen
+
 # Spicetify config
+# After you log in to your spotify account
+# run: spicetify backup apply
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
-# After you log in to your spotify account
-# run: spicetify backup apply
-
 # Associate file types with proper applications
 IMG_APP="org.gnome.eog.desktop"
-PDF_APP="mupdf.desktop"
+PDF_APP="org.pwmt.zathura-pdf-mupdf.desktop"
 VID_APP="mpv.desktop"
 AUD_APP="mpv.desktop"
 ARC_APP="org.gnome.FileRoller.desktop"
@@ -93,4 +109,5 @@ xdg-mime default "$AUD_APP" audio/mpeg
 xdg-mime default "$AUD_APP" audio/ogg
 
 WALLPAPER_PATH=~/dotfiles/wallpapers
-wallust run "${WALLPAPER_PATH}/${WALLPAPER}"
+# wallust run "${WALLPAPER_PATH}/${WALLPAPER}"
+matugen image "${WALLPAPER_PATH}/${WALLPAPER}"

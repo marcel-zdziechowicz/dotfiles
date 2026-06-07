@@ -1,73 +1,75 @@
-# For defaults and description of each option, see the link bellow
-# https://github.com/dunst-project/dunst/blob/master/dunstrc
-
 [global]
-# Display
-follow = mouse
-width = 300
-height = (0, 300)
-origin = top-right
-offset = (35, 35)
+monitor = 0
+follow = keyboard
+width = 400
+height = 400
+origin = top-center
+offset = 10x20
+scale = 0
+notification_limit = 0
+progress_bar = true
+progress_bar_height = 10
+progress_bar_frame_width = 1
+progress_bar_min_width = 150
+progress_bar_max_width = 300
 indicate_hidden = yes
-notification_limit = 5
-gap_size = 12
-padding = 12
-horizontal_padding = 20
+transparency = 0
+separator_height = 2
+padding = 8
+horizontal_padding = 8
+text_icon_padding = 0
 frame_width = 1
-sort = no
-
-# Progress bar
-progress_bar_frame_width = 0
-progress_bar_corner_radius = 3
-
-# Colors
-foreground = "#cdd1dc"
-frame_color = "#2d303c"
-highlight = "#2274d5, #82aad9"
-
-# Text
-font = JetBrainsMono Nerd Font 11
+sort = yes
+font = FiraCode 12
+line_height = 0
 markup = full
-format = "<small>%a</small>\n<b>%s</b>\n%b"
+format = "<b>%s</b>\n%b"
 alignment = left
 vertical_alignment = center
-show_age_threshold = -1
+show_age_threshold = 60
+ellipsize = middle
+ignore_newline = no
+stack_duplicates = true
 hide_duplicate_count = false
-
-# Icon
+show_indicators = yes
 icon_position = left
-min_icon_size = 54
-max_icon_size = 80
-icon_path = /usr/share/icons/Arc/status/96:/usr/share/icons/Arc/status/symbolic
-icon_corner_radius = 4
-
-# Misc/Advanced
-# dmenu = wofi --show drun --prompt 'Open with'
-corner_radius = 10
-
-# Mouse
+min_icon_size = 0
+max_icon_size = 32
+icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+icon_path = /usr/share/icons/Papirus-Dark/48x48/actions/:/usr/share/icons/Papirus-Dark/48x48/apps/:/usr/share/icons/Papirus-Dark/48x48/devices/:/usr/share/icons/Papirus-Dark/48x48/emblems/:/usr/share/icons/Papirus-Dark/48x48/emotes/:/usr/share/icons/Papirus-Dark/48x48/mimetypes/:/usr/share/icons/Papirus-Dark/48x48/places/:/usr/share/icons/Papirus-Dark/48x48/status/
+sticky_history = yes
+history_length = 20
+browser = /usr/bin/xdg-open
+always_run_script = true
+title = Dunst
+class = Dunst
+corner_radius = 8
+ignore_dbusclose = false
+force_xwayland = false
+force_xinerama = false
 mouse_left_click = close_current
 mouse_middle_click = do_action, close_current
 mouse_right_click = close_all
-
+separator_color = frame
+frame_color = "#e9b5ef"
+highlight = "#e9b5ef"
+separator_color= "#988e97"
+[experimental]
+per_monitor_dpi = false
 [urgency_low]
-background = "#383c4af0"
 timeout = 3
-
+background = "#171217"
+foreground = "#eae0e7"
+highlight = "#603768"
 [urgency_normal]
-background = "#383c4af0"
-timeout = 8
-
+timeout = 6
+background = "#171217"
+foreground = "#eae0e7"
+highlight = "#603768"
 [urgency_critical]
-background = "#9b4d4bf0"
-frame_color = "#ab6d6b"
-highlight = "#eb4d4b"
 timeout = 0
+background = "#171217"
+foreground = "#eae0e7"
+highlight = "#ffb4ab"
 
-# Rules
-[fullscreen_delay_everything]
-fullscreen = delay
 
-[fullscreen_show_critical]
-msg_urgency = critical
-fullscreen = show

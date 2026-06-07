@@ -3,6 +3,6 @@ return {
 	terminal = "ghostty",
 	menu = "fuzzel",
 	wallpaper = "/home/coffee/dotfiles/wallpapers/temple.jpg",
-	font = "JetBrainsMono",
+	font = "JetBrainsMono Nerd Font Mono",
 	fileManager = "thunar",
 }

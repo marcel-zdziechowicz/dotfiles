@@ -1,5 +1,5 @@
-config-file = colors.ghostty
-font-family = JetBrains Mono
-font-size = 32
+theme = Matugen
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 24
 command = /bin/zsh
 background-opacity = 0.85
