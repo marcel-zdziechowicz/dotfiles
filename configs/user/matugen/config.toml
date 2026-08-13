@@ -29,9 +29,13 @@ input_path = '~/.config/matugen/templates/ghostty-colors.txt'
 output_path = '~/.config/ghostty/themes/Matugen'
 post_hook = 'pkill -SIGUSR2 ghostty'
 
-[templates.neovim]
-input_path = '~/.config/matugen/templates/nvim-colors.lua'
-output_path = '~/.config/nvim/lua/plugins/base16.lua'
+# Disabled: the generated base16 themes look bad, and this
+# would drop base16.lua back into nvim/lua/plugins/ where
+# lazy would load it and fight the nightfox colorscheme.
+# The template is kept in templates/nvim-colors.lua.
+# [templates.neovim]
+# input_path = '~/.config/matugen/templates/nvim-colors.lua'
+# output_path = '~/.config/nvim/lua/plugins/base16.lua'
 
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk3-colors.css'

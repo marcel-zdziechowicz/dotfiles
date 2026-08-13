@@ -27,8 +27,8 @@ vim dotfiles/scripts/variables.sh
 Now the last part of the live ISO config is running the script
 
 ```sh
-chmod +x dotfiles/scripts/live-iso-conf.sh
-dotfiles/scripts/live-iso-conf.sh
+chmod +x dotfiles/scripts/arch/live-iso-conf.sh
+dotfiles/scripts/arch/live-iso-conf.sh
 ```
 
 Now your Arch should be ready to boot. Reboot the machine, login to your account with credentials specified earlier in the `variables.sh` and continue following next steps.
@@ -40,7 +40,7 @@ reboot
 And after you log in just run:
 
 ```sh
-dotfiles/scripts/postinstall.sh
+dotfiles/scripts/arch/postinstall.sh
 ```
 
 And that's it. Your machine is set up. You can access the desktop environment with:

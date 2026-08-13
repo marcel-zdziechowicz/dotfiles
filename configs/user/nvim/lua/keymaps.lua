@@ -41,3 +41,36 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.keymap.set("n", "<leader>-", "<CMD>Oil --float --preview %:p:h<CR>");
+vim.keymap.set("n", "<leader>cl", function()
+  local filepath = vim.fn.expand("%:.") -- Relative path
+  local linenr = vim.fn.line(".")
+  vim.fn.setreg("+", filepath .. ":" .. linenr)
+end, { desc = "Copy file:line to clipboard" })
+
+local term_state = { buf = nil, win = nil }
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold" }, {
+  command = "checktime",
+})
+
+vim.keymap.set({ "n", "t" }, "<leader>tt", function()
+  if term_state.win and vim.api.nvim_win_is_valid(term_state.win) then
+    vim.api.nvim_win_hide(term_state.win)
+    term_state.win = nil
+    return
+  end
+
+  if term_state.buf and vim.api.nvim_buf_is_valid(term_state.buf) then
+    vim.cmd("botright split")
+    vim.api.nvim_win_set_buf(0, term_state.buf)
+  else
+    vim.cmd("botright split | terminal")
+    term_state.buf = vim.api.nvim_get_current_buf()
+  end
+
+  term_state.win = vim.api.nvim_get_current_win()
+  vim.cmd("resize 15")
+  vim.cmd("startinsert")
+end, { desc = "Toggle [t]erminal" })

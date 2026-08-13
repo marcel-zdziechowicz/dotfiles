@@ -2,14 +2,15 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'j-hui/fidget.nvim' },
+      -- { 'j-hui/fidget.nvim' },
       { 'williamboman/mason.nvim', config = true },
       {	'williamboman/mason-lspconfig.nvim',
 				config = function()
 					require('mason-lspconfig').setup({
 				    ensure_installed = {
 							"pylsp", "clangd", "lua_ls",
-							"bashls",
+							"bashls", "svelte", "ts_ls",
+							"superhtml", "cssls",
 						},
 						automatic_installation = false,
 						automatic_enable = true,

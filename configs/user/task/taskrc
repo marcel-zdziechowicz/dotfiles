@@ -1,0 +1,30 @@
+# Taskwarrior configuration.
+#
+# XDG location: $XDG_CONFIG_HOME/task/taskrc (supported since task 2.6).
+# Note the filename has NO leading dot here - only the legacy ~/.taskrc does.
+
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
+
+news.version=3.4.2
+
+# Machine-local overrides (data.location for work setups, credentials, etc.)
+# live outside this repo. Create the file and uncomment to use it:
+# include ~/.local/state/task/local.conf
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include bubblegum-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme

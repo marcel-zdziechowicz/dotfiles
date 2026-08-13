@@ -8,6 +8,11 @@ hl.window_rule({
 -- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
+		match = { focus = true },
+		idle_inhibit = "fullscreen"
+})
+
+hl.window_rule({
     -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
@@ -37,6 +42,89 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+hl.window_rule({
+		name = "open-blueman-floating",
+		match = { class = "blueman-manager" },
+		float = true,
+		size = { 720, 480 },
+})
+
+hl.window_rule({
+		name = "open-printer-settings-floating",
+		match = { class = "system-config-printer" },
+		float = true,
+})
+
+hl.window_rule({
+		name = "open-qalculate-floating",
+		match = { class = "qalculate-gtk" },
+		float = true,
+		size = { 480, 500 },
+})
+
+hl.window_rule({
+		name = "open-nwg-look-floating",
+		match = { class = "nwg-look" },
+		float = true,
+})
+
+hl.window_rule({
+		name = "open-qt6ct-floating",
+		match = { class = "qt6ct" },
+		float = true,
+		size = { 660, 650 },
+})
+
+hl.window_rule({
+		name = "open-nm-floating",
+		match = { class = "nm-connection-editor" },
+		float = true,
+})
+
+hl.window_rule({
+		name = "open-cmake-floating",
+		match = { class = "cmake-gui" },
+		float = true,
+		size = { 800, 500 },
+})
+
+hl.window_rule({
+		name = "open-virt-manager-floating",
+		match = { class = "virt-manager" },
+		float = true,
+		size = { 660, 650 },
+})
+
+hl.window_rule({
+		name = "open-thunar-floating",
+		match = { class = "thunar" },
+		float = true,
+})
+
+hl.window_rule({
+	name = "open-eog-floating",
+	match = { class = "org.gnome.eog" },
+	float = true,
+})
+
+hl.window_rule({
+		name = "open-file-picker-floating",
+		match = { class = "xdg-desktop-portal-gtk" },
+		float = true,
+		size = { 720, 480 },
+})
+
+hl.window_rule({
+		name = "open-file-roller-floating",
+		match = { class = "org.gnome.FileRoller" },
+		float = true,
+})
+
+hl.layer_rule({
+	blur = true,
+	match = { namespace = "gtk-layer-shell" }
 })
 
 -- windowrule {

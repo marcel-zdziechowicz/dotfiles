@@ -1,0 +1,432 @@
+(defwindow dashboard-bg
+  :monitor "HDMI-A-1"
+  :geometry (geometry :x "0px" :y "0px" :width "100%" :height "100%")
+  :stacking "overlay"
+  :focusable "ondemand"
+  (eventbox
+		:onclick "$HOME/.local/bin/eww close-all"
+		(box :class "bg")
+	)
+)
+
+(defpoll ws_data :interval "20h" "hyprctl workspaces -j")
+(defpoll active_ws :interval "20h" "hyprctl activeworkspace -j")
+
+(defwidget workspaces_widget []
+	(box
+		:orientation "horizontal"
+		:spacing 5
+		(for i in "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+			(eventbox
+				:class "${jq(active_ws, '.id') == i
+					? 'widget ws active-ws'
+					: jq(ws_data, 'any(.[]; .id == ' + i + ')')
+						? 'widget ws occupied-ws'
+						: 'widget ws'}"
+				:cursor "pointer"
+				:onclick "hyprctl dispatch 'hl.dsp.focus({ workspace = ${i} })'"
+				"${i}"
+			)
+		)
+	)
+)
+
+(defpoll number_day :interval "5h"  "date \"+%d\"")
+(defpoll month :interval "10h"  "date \"+%b\"")
+(defpoll min :interval "10s"  "date \"+%M\"")
+(defpoll hour :interval "10s"  "date \"+%H\"")
+(defpoll month_full :interval "15h"  "date \"+%B\"")
+(defpoll year_full :interval "15h"  "date \"+%Y\"")
+(defpoll day :interval "15h"  "date +%A")
+
+(defwidget datetime_widget []
+	(box
+		:class "widget"
+		:orientation "vertical"
+		(label
+			:class "time"
+			:height 100
+			:text "${hour}:${min}"
+		)
+		(label
+			:class "date"
+			:height 100
+			:text "${number_day} ${month_full} ${year_full}"
+		)
+	)
+)
+
+;; TODO: propo nerd font
+(defpoll music_image :interval "20h" "bash ~/.config/eww/scripts/get-image.sh")
+(defpoll play_icon :interval "1s" "bash ~/.config/eww/scripts/get-play-pause-icon.sh")
+(defpoll music_artist :interval "1s" "playerctl metadata --format '{{artist}}'")
+(defpoll music_title :interval "1s" "playerctl metadata --format '{{title}}'")
+
+(defwidget music_widget []
+	(box
+		:orientation "horizontal"
+		:class "widget"
+		:hexpand false
+		:vexpand false
+		(box
+			:class "music-image"
+			:style "background-image: url('${music_image}');"
+		)
+		(box
+			:orientation "vertical"
+			(label :truncate true :text "${music_title}")
+			(label :truncate true :text "${music_artist}")
+			(scale :class "bar music-bar" :hexpand false :width 180 :active false :draw-value false :min 0 :max 100 :value 50)
+			(box
+				:orientation "horizontal"
+				(eventbox
+					:class "player-btn"
+					:cursor "pointer"
+					:onclick "playerctl previous"
+					"󰒮"
+				)
+				(eventbox
+					:class "player-btn"
+					:cursor "pointer"
+					:onclick "playerctl play-pause"
+					"${play_icon}"
+				)
+				(eventbox
+					:class "player-btn"
+					:cursor "pointer"
+					:onclick "playerctl next"
+					"󰒭"
+				)
+			)
+		)
+	)
+)
+
+;; Elements can be smaller (maybe 25) and centered
+;; in the fixed size box
+(defwidget tray_widget []
+	(systray
+		:class "widget"
+		:spacing 5
+		:orientation "horizontal"
+		:icon-size 50
+	)
+)
+
+(defwidget search_widget []
+	(eventbox
+		:class "widget icon-btn icon-search"
+		:cursor "pointer"
+		""
+	)
+)
+
+(defpoll sliders_data :interval "20h" "bash ~/.config/eww/scripts/get-sliders-info.sh")
+
+(defwidget sliders_widget []
+	(box
+		:class "widget"
+		:hexpand false
+		:vexpand false
+		:orientation "vertical"
+		(box :orientation "horizontal"
+			(label :class "battery-lbl" :text "${sliders_data.battery.icon}: ${sliders_data.battery.percent}%")
+			(scale :class "bar battery-bar" :valign "center" :hexpand false :width 90 :active false :draw-value false :min 0 :max 100 :value { sliders_data.battery.percent })
+		)
+		(box :orientation "horizontal"
+			(label :class "brightness-lbl" :text "${sliders_data.brightness.icon}: ${sliders_data.brightness.percent}%")
+			(scale :class "brightness-scale" :valign "center" :hexpand false :width 100 :draw-value false :min 0 :max 100 :value { sliders_data.brightness.percent })
+		)
+		(box :orientation "horizontal"
+			(label :class "audio-lbl" :text "${sliders_data.volume.icon}: ${sliders_data.volume.percent}%")
+			(scale :class "audio-scale" :valign "center" :hexpand false :width 100 :draw-value false :min 0 :max 100 :value { sliders_data.volume.percent } )
+		)
+	)
+)
+
+(defpoll open_windows_data :interval "20h" "bash ~/.config/eww/scripts/get-window-icon.sh")
+
+(defwidget open_windows_widget []
+	(box
+		:orientation "horizontal"
+		:spacing 16
+		:class "bg"
+		(for win in open_windows_data
+			(eventbox
+				:class "open-win-slot"
+				:width 95
+				:height 95
+				:cursor "pointer"
+				:onclick "hyprctl dispatch 'hl.dsp.focus({ window = \"address:${win.address}\" })'"
+				:tooltip "${ win.name }"
+				(box
+					:class "open-win-tile"
+					:halign "center"
+					:valign "center"
+					(image
+						:halign "center"
+						:valign "center"
+						:image-width 48
+						:image-height 48
+						:path { win.icon }
+					)
+				)
+			)
+		)
+	)
+)
+
+(defwidget pictures_widget []
+	(eventbox
+		:class "widget icon-btn icon-pictures"
+		:cursor "pointer"
+		:onclick "(thunar $HOME/Pictures)"
+		""
+	)
+)
+
+(defwidget common_dirs_widget []
+	(box
+		:class "widget"
+		:orientation "vertical"
+		(eventbox
+			:class "dir dir-documents"
+			:cursor "pointer"
+			:onclick "(thunar ~/Documents)"
+			"Documents"
+		)
+		(eventbox
+			:class "dir dir-downloads"
+			:cursor "pointer"
+			:onclick "(thunar ~/Downloads)"
+			"Downloads"
+		)
+		(eventbox
+			:class "dir dir-dotfiles"
+			:cursor "pointer"
+			:onclick "(thunar ~/dotfiles)"
+			"Dotfiles"
+		)
+		(eventbox
+			:class "dir dir-hacking"
+			:cursor "pointer"
+			:onclick "(thunar ~/Hacking)"
+			"Hacking"
+		)
+		(eventbox
+			:class "dir dir-work"
+			:cursor "pointer"
+			:onclick "(thunar ~/Work)"
+			"Work"
+		)
+		(eventbox
+			:class "dir dir-dev"
+			:cursor "pointer"
+			:onclick "(thunar ~/Dev)"
+			"Dev"
+		)
+	)
+)
+
+(defwidget shutdown_widget []
+	(eventbox
+		:class "widget icon-btn icon-shutdown"
+		:cursor "pointer"
+		"󰐥"
+	)
+)
+
+(defwidget reboot_widget []
+	(eventbox
+		:class "widget icon-btn icon-reboot"
+		:cursor "pointer"
+		"󰜉"
+	)
+)
+
+(defwidget lockscreen_widget []
+	(eventbox
+		:class "widget icon-btn icon-lockscreen"
+		:cursor "pointer"
+		""
+	)
+)
+
+(defwidget gamemode_widget []
+	(eventbox
+		:class "widget icon-btn icon-gamemode"
+		:cursor "pointer"
+		""
+	)
+)
+
+(defpoll sysinfo :interval "20h" "bash ~/.config/eww/scripts/get-sys-info.sh")
+(defpoll diskinfo :interval "20h" "bash ~/.config/eww/scripts/get-disk-info.sh")
+(defpoll proc_count :interval "20h" "ps -e --no-headers | wc -l")
+;; TODO: performance i powersaving buttons 3x2
+
+(defwidget info_widget []
+	(box
+		:class "widget"
+		:orientation "vertical"
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			:spacing 14
+			(label :class "info-lbl ip-lbl" :justify "left" :text "Local IP: ${sysinfo.ip}")
+			(label :class "info-lbl net-lbl" :text "↓${formatbytes(round(EWW_NET.wlp0s29u1u6.NET_DOWN, 0))}/s ↑${formatbytes(round(EWW_NET.wlp0s29u1u6.NET_UP, 0))}/s")
+			(label :class "info-lbl ping-lbl" :text "Ping: ${sysinfo.ping} ms")
+		)
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			:spacing 14
+			(label :class "info-lbl uptime-lbl" :text "⏱  Up: ${sysinfo.uptime}")
+			(label :class "info-lbl proc-lbl" :text "Procesy: ${proc_count}")
+			(label :class "info-lbl kernel-lbl" :text "Kernel: ${sysinfo.kernel}")
+		)
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			:spacing 14
+			(label :class "info-lbl ram-lbl" :text " RAM: ${sysinfo.ram_info}")
+			(scale :class "bar ram-bar" :valign "center" :hexpand false :width 120 :active false :draw-value false :min 0 :max 100 :value {sysinfo.ram_usage})
+		)
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			:spacing 14
+			(label :class "info-lbl cpu-lbl" :text " CPU: ${sysinfo.cpu_temp}°C")
+			(scale :class "bar cpu-bar" :valign "center" :hexpand false :width 120 :active false :draw-value false :min 0 :max 100 :value {sysinfo.cpu_usage})
+		)
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			:spacing 14
+			(label :class "info-lbl gpu-lbl" :text "󰢮 GPU: ${sysinfo.gpu_temp}°C")
+			(scale :class "bar gpu-bar" :valign "center" :hexpand false :width 120 :active false :draw-value false :min 0 :max 100 :value {sysinfo.gpu_usage})
+		)
+		(box
+			:orientation "horizontal"
+			:space-evenly false
+			:spacing 14
+			(label :class "info-lbl disk-lbl" :text "💿 Disk: ${diskinfo.percent}% (${diskinfo.used_gb}/${diskinfo.total_gb}GB)")
+			(scale :class "bar disk-bar" :valign "center" :hexpand false :width 120 :active false :draw-value false :min 0 :max 100 :value {diskinfo.percent})
+		)
+	)
+)
+
+(defwindow workspaces
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :y "10px" :width "795px" :height "75px" :anchor "center top")
+	(workspaces_widget)
+)
+
+(defwindow datetime 
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "240px" :y "160px" :width "440px" :height "460px")
+	(datetime_widget)
+)
+
+(defwindow music
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "685px" :y "160px" :width "500px" :height "250px")
+	(music_widget)
+)
+
+(defwindow tray
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "685px" :y "415px" :width "500px" :height "50px")
+	(tray_widget)
+)
+
+(defwindow info
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "685px" :y "470px" :width "500px" :height "305px")
+	(info_widget)
+)
+
+(defwindow search
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "240px" :y "625px" :width "150px" :height "150px")
+	(search_widget)
+)
+
+(defwindow sliders
+	:stacking "overlay"
+	:focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "395px" :y "625px" :width "285px" :height "150px")
+	(sliders_widget)
+)
+
+;; TODO: Volume slider on the right to music window
+;; TODO: Under music window add information (local IP, RAM usage, CPU load, Disk space, uptime, generally some thick information loaded window, but the information will be static, i.e. not updated after dashboard is opened)
+
+(defwindow open_windows 
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :y "10px" :anchor "center bottom")
+	(open_windows_widget)
+)
+
+(defwindow pictures
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "1190px" :y "160px" :width "240px" :height "150px")
+	(pictures_widget)
+)
+
+(defwindow common_dirs 
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "1190px" :y "315px" :width "240px" :height "460px")
+	(common_dirs_widget)
+)
+
+(defwindow shutdown
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "1435px" :y "160px" :width "150px" :height "150px")
+	(shutdown_widget)
+)
+
+(defwindow reboot 
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "1435px" :y "315px" :width "150px" :height "150px")
+	(reboot_widget)
+)
+
+(defwindow lockscreen 
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "1435px" :y "470px" :width "150px" :height "150px")
+	(lockscreen_widget)
+)
+
+(defwindow gamemode
+  :stacking "overlay"
+  :focusable "ondemand"
+	:monitor "HDMI-A-1"
+	:geometry (geometry :x "1435px" :y "625px" :width "150px" :height "150px")
+	(gamemode_widget)
+)

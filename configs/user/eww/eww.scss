@@ -1,0 +1,222 @@
+$background: #1b1b1b;
+$background-hover: #3f3f3f;
+$ws-inactive-border: #ff746c;   // pastel red
+$ws-active-border: #80ef80;     // pastel green
+$ws-occupied-border: #ffc067;   // pastel orange
+$icon-color-shutdown:   #ff9d9d; // soft red
+$icon-color-reboot:     #ffd580; // warm yellow
+$icon-color-lockscreen: #8fd8ff; // pastel blue
+$icon-color-gamemode:   #d39cff; // lavender
+$icon-color-pictures:   #ffb8e6; // pink
+$icon-color-search:     #8ff0d2; // mint
+$dir-color-documents: #8fd8ff; // blue
+$dir-color-downloads: #80ef80; // green
+$dir-color-dotfiles:  #b7b7b7; // neutral gray
+$dir-color-hacking:   #7ef5b4; // cyber mint
+$dir-color-work:      #ffc067; // orange
+$dir-color-dev:       #d39cff; // purple
+$time-color: #f5f5f5;
+$date-color: #bdbdbd;
+$music-artist-color: #8ff0d2;
+$music-title-color:  #ffffff;
+$music-bar-bg: #B48EAD;
+$player-btn-color: #ffffff;
+$player-btn-hover: #ffffff;
+
+.widget {
+  background: $background;
+  border-radius: 15px;
+}
+
+window { background: rgba(0, 0, 0, 0.1); }
+.time { font-size: 90; color: $time-color; }
+.date { font-size: 25; color: $date-color; }
+.dir:hover { background: $background-hover; }
+.dir-documents { font-size: 32; color: $dir-color-documents; }
+.dir-downloads { font-size: 32; color: $dir-color-downloads; }
+.dir-dotfiles { font-size: 32; color: $dir-color-dotfiles; }
+.dir-hacking { font-size: 32; color: $dir-color-hacking; }
+.dir-work { font-size: 32; color: $dir-color-work; }
+.dir-dev { font-size: 32; color: $dir-color-dev; }
+
+.icon-btn { font-size: 90; }
+.icon-btn:hover { background: $background-hover; }
+.icon-shutdown { color: $icon-color-shutdown; }
+.icon-reboot { color: $icon-color-reboot; }
+.icon-lockscreen { color: $icon-color-lockscreen; }
+.icon-gamemode { color: $icon-color-gamemode; }
+.icon-pictures { color: $icon-color-pictures; }
+.icon-search { color: $icon-color-search; }
+
+.ws {
+  border: 2px solid $ws-inactive-border;
+  border-radius: 50%;
+  font-size: 35;
+  transition: border-width 150ms ease, box-shadow 150ms ease, background 150ms ease;
+
+  &:hover {
+    background: $background-hover;
+    border-width: 4px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.active-ws { border: 2px solid $ws-active-border; }
+.occupied-ws { border: 2px solid $ws-occupied-border; }
+
+.open-win-tile {
+  min-width: 75px;
+  min-height: 75px;
+  background-color: $background;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  transition: min-width 150ms ease, min-height 150ms ease, border-width 150ms ease, box-shadow 150ms ease, border-color 150ms ease, background-color 150ms ease;
+}
+
+/* the eventbox (.open-win-slot) owns the actual GDK window and is what
+ * receives :hover; the visible circle is a plain child box, so we style
+ * it via a descendant selector rather than relying on it getting its
+ * own independent hover state */
+.open-win-slot:hover .open-win-tile {
+  min-width: 95px;
+  min-height: 95px;
+  border-width: 4px;
+  background-color: $background-hover;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
+}
+
+.music-image {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	min-height: 210px;
+	min-width: 210px;
+	margin: 10px;
+	border: 3px solid $music-bar-bg;
+	border-radius: 20px;
+}
+
+.player-btn {
+  color: $player-btn-color;
+  border-radius: 50%;
+  font-size: 32px;
+
+  &:hover {
+    color: $player-btn-hover;
+  }
+}
+
+
+$ip-lbl-color: #8ff0d2;      // mint
+$ping-lbl-color: #ffb8e6;    // pink
+$uptime-lbl-color: #ff9d9d;  // soft red
+$kernel-lbl-color: #ffd580;  // warm yellow
+$ram-lbl-color: #80ef80;     // pastel green, matches ram-bar
+$cpu-lbl-color: #ffc067;     // pastel orange, matches cpu-bar
+$gpu-lbl-color: #d39cff;     // lavender, matches gpu-bar
+$disk-lbl-color: #8fd8ff;    // pastel blue, matches disk-bar
+$net-lbl-color: #ff746c;     // pastel red
+$proc-lbl-color: #B48EAD;    // mauve, matches music-bar
+$ram-bar-bg: #80ef80;            // pastel green
+$cpu-bar-bg: #ffc067;            // pastel orange
+$gpu-bar-bg: #d39cff;            // lavender
+$disk-bar-bg: #8fd8ff;           // pastel blue
+$battery-bar-bg: #80ef80;        // pastel green
+$brightness-bar-color: #ffd580;  // warm yellow
+$audio-bar-color: #8fd8ff;       // pastel blue
+
+.info-lbl { font-size: 14px; }
+.ip-lbl { color: $ip-lbl-color; }
+.ping-lbl { color: $ping-lbl-color; }
+.uptime-lbl { color: $uptime-lbl-color; }
+.kernel-lbl { color: $kernel-lbl-color; }
+.ram-lbl { color: $ram-lbl-color; }
+.cpu-lbl { color: $cpu-lbl-color; }
+.gpu-lbl { color: $gpu-lbl-color; }
+.disk-lbl { color: $disk-lbl-color; }
+.net-lbl { color: $net-lbl-color; }
+.proc-lbl { color: $proc-lbl-color; }
+
+.battery-lbl    { color: $battery-bar-bg; }
+.brightness-lbl { color: $brightness-bar-color; }
+.audio-lbl      { color: $audio-bar-color; }
+
+/* =========================================================
+ * Everything below is a `scale` (GtkScale): scale > contents > trough > (slider, highlight)
+ * "highlight" = filled part of the track up to the current value
+ * "slider"    = the draggable handle (the little circle)
+ *
+ * We use `scale` for ALL bars, even the read-only display ones
+ * (RAM/CPU/GPU/Disk/battery/music), because eww's `progress` widget
+ * ignores its own :hexpand attribute and always fills leftover row
+ * space -- `scale` respects it, so sizing via min-width actually works.
+ * Read-only bars get :active false in yuck + the `.bar` class here,
+ * which hides the slider handle so they still look like plain bars.
+ * ========================================================= */
+scale trough {
+  background-color: rgba(255, 255, 255, 0.08);
+  min-height: 10px;
+  min-width: 100px;
+  border: none;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+scale trough highlight {
+  min-height: 10px;
+  border: none;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+scale trough slider {
+  background-color: #ffffff;
+  background-image: linear-gradient(to right, #ffffff, #ffffff);
+  min-width: 16px;
+  min-height: 16px;
+  margin: -3px 0;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+scale trough slider:hover { background-color: $background-hover; background-image: linear-gradient(to right, $background-hover, $background-hover); }
+
+/* read-only bars (`.bar`, set :active false in yuck): no drag handle,
+ * and no dimming from GTK's disabled/insensitive state */
+.bar trough slider {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  background: none;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+.bar,
+.bar trough,
+.bar trough highlight { opacity: 1; }
+
+/* sizing per bar */
+.music-bar           { margin: 0 10px; }
+.music-bar trough    { min-width: 180px; }
+.battery-bar trough  { min-width: 90px; }
+.ram-bar trough,
+.cpu-bar trough,
+.gpu-bar trough,
+.disk-bar trough     { min-width: 120px; }
+.brightness-scale trough,
+.audio-scale trough  { min-width: 100px; }
+
+/* fill colors per bar (background-image wins the cascade against the
+ * active GTK theme's own accent color on `highlight`) */
+.music-bar trough highlight      { background-color: $music-bar-bg;         background-image: linear-gradient(to right, $music-bar-bg, $music-bar-bg); }
+.battery-bar trough highlight    { background-color: $battery-bar-bg;       background-image: linear-gradient(to right, $battery-bar-bg, $battery-bar-bg); }
+.ram-bar trough highlight        { background-color: $ram-bar-bg;           background-image: linear-gradient(to right, $ram-bar-bg, $ram-bar-bg); }
+.cpu-bar trough highlight        { background-color: $cpu-bar-bg;           background-image: linear-gradient(to right, $cpu-bar-bg, $cpu-bar-bg); }
+.gpu-bar trough highlight        { background-color: $gpu-bar-bg;           background-image: linear-gradient(to right, $gpu-bar-bg, $gpu-bar-bg); }
+.disk-bar trough highlight       { background-color: $disk-bar-bg;          background-image: linear-gradient(to right, $disk-bar-bg, $disk-bar-bg); }
+.brightness-scale trough highlight { background-color: $brightness-bar-color; background-image: linear-gradient(to right, $brightness-bar-color, $brightness-bar-color); }
+.audio-scale trough highlight    { background-color: $audio-bar-color;      background-image: linear-gradient(to right, $audio-bar-color, $audio-bar-color); }

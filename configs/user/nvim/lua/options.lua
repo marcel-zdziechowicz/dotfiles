@@ -21,3 +21,4 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.inccommand = 'nosplit'
 vim.opt.cursorline = true
+vim.opt.autoread = true

@@ -1,6 +1,10 @@
 local vars = require 'lua.variables'
 local mainMod = "SUPER"
 
+-- eww is built from source into ~/.local/bin by install.sh,
+-- which is not on Hyprland's PATH, so it needs a full path.
+local eww = os.getenv("HOME") .. "/.local/bin/eww"
+
 hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + M",
@@ -14,6 +18,7 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(vars.browser))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(vars.menu))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(vars.fileManager))
 hl.bind(mainMod .. " + I", hl.dsp.layout("togglesplit"))    -- dwindle only
+
 hl.bind(mainMod .. " + D", function()
 	local curr_layout = hl.get_config("general.layout")
 	if curr_layout == 'dwindle' then
@@ -22,6 +27,20 @@ hl.bind(mainMod .. " + D", function()
 		hl.config({ general = { layout = 'dwindle' }})
 	end
 end)
+
+hl.bind(mainMod .. " + TAB", function()
+	windows = "dashboard-bg workspaces datetime music tray search pictures common_dirs shutdown reboot lockscreen gamemode open_windows info sliders"
+	local handle = io.popen(eww .. " active-windows | grep dashboard-bg")
+	local result = handle:read("*a")
+	handle:close()
+
+	if result == nil or result == "" then
+			hl.exec_cmd(eww .. " open-many " .. windows)
+	else
+			hl.exec_cmd(eww .. " close-all")
+	end
+end)
+
 hl.bind(mainMod .. " + SHIFT + S",
 	hl.dsp.exec_cmd(
 		'grim -g "$(slurp)" ~/Pictures/screenshots/screenshot_$(date +%F_%H-%M-%S).png'))

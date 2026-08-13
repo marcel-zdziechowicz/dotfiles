@@ -7,7 +7,7 @@ return {
 				'bash', 'c', 'diff',
 				'html', 'lua', 'luadoc',
 				'markdown', 'vim', 'vimdoc',
-				'cpp',
+				'cpp'
 			},
 			auto_install = true,
 			highlight = {

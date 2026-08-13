@@ -37,7 +37,7 @@ HOSTNAME="machine"
 PASSWORD=""
 ROOT_PASSWD=""
 
-WALLPAPER="temple.jpg"
+WALLPAPER="dragons.jpg"
 
 # DISK_DEV should contain your
 # hard drive device path as 
@@ -77,8 +77,11 @@ SSID=""
 # filled
 PASSPHRASE=""
 
-# Your wireless network interface
-# (something like wlan0 or enp0s3)
+# OpenBSD only - builds /etc/hostname.$NETIF.
+# Unused on Arch, where nmcli picks the wireless
+# device itself. OpenBSD names interfaces after
+# the driver (iwm0, athn0, urtwn0...), so check
+# with ifconfig - this is not a Linux-style name.
 NETIF="wlan0"
 
 DNS_PRIMARY="1.1.1.1"
@@ -98,6 +101,7 @@ OPENBSD_PKGS=(
 INSTALL=(
 	parted openssh wget zip unzip 7zip reflector
 	dnsmasq fail2ban bridge-utils iptables-nft ufw
+	udisks2 sysstat xdg-user-dirs
 
 	libvirt qemu-full virt-manager
 
@@ -107,12 +111,17 @@ INSTALL=(
 	bat btop clang cloc eza fzf gdb
 	git neovim nodejs npm ripgrep
 	strace tmux yazi zoxide fd
+	jq lazygit glow smug atac
+	gitleaks osv-scanner xdg-ninja
+	docker docker-compose
+	python-pipx python-hatchling
 
 	qalculate-gtk brightnessctl mesa-utils
 
 	cups brlaser brother-dcp-l2530dw system-config-printer
 
 	hyprland
+	hyprland-guiutils
 	xdg-desktop-portal-hyprland
 	polkit-kde-agent
 	qt6ct
@@ -128,6 +137,7 @@ INSTALL=(
 	# wallust-git
 	waybar
 	wl-clipboard
+	playerctl
 
 	thunar
 	thunar-archive-plugin
@@ -141,6 +151,11 @@ INSTALL=(
 	arc-icon-theme-git
 	bibata-cursor-theme
 	breeze-gtk
+	inter-font
+	material-black-colors-theme
+	# Required by matugen's gtk3 post_hook
+	# (gsettings set gtk-theme adw-gtk3-{{mode}})
+	adw-gtk-theme
 
 	ghostty
 	mpv
@@ -155,14 +170,38 @@ INSTALL=(
 	inkscape
 	spicetify-bin
 	notesnook
-	# task
+	task
 	dooit
 	dooit-extras
 	matugen
-	smassh
+	smassh-bin
 	bind
 	easyeffects
 	lsp-plugins-lv2
 	tcpdump
 	zathura-pdf-mupdf
+	mupdf
+	noto-fonts-emoji
+	# 'rust' provides both rustc and cargo; the bare
+	# names do not exist as packages. cargo is needed
+	# to build eww from source in install.sh
+	rust
+	timg
+	radeontop
+	cava
+	upower
+	discord
+	steam
+	cdrtools
+	cfitsio
+	gjs
+	tk
+
+	# Already installed earlier in the bootstrap
+	# (grub/efibootmgr by live-iso-conf.sh, yay-bin
+	# by install.sh). Listed only so a full package
+	# audit of this file matches the installed set.
+	grub
+	efibootmgr
+	yay-bin
 )

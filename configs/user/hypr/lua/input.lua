@@ -1,15 +1,15 @@
 hl.config({
     input = {
         kb_layout  = "pl",
-
         follow_mouse = 1,
-
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
         touchpad = {
             natural_scroll = false,
         },
     },
+		cursor = {
+			inactive_timeout = 1,
+		},
 })
 
 hl.gesture({
